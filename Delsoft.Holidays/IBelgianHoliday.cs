@@ -23,6 +23,4 @@ public interface IBelgianHoliday
     DateTime Armistice1918 { get; }
 
     DateTime Christmas { get; }
-
-    IBelgianHoliday ForYear(int year);
 }

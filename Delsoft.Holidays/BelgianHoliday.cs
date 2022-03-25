@@ -2,17 +2,29 @@ namespace Delsoft.Holiday;
 
 internal class BelgianHoliday : IBelgianHoliday
 {
-    private int _year = DateTime.Today.Year;
-    
-    public static BelgianHoliday Create() => new();
+    public Calendar Calendar { get; }
 
-    public DateTime NewYear => new(_year, 1, 1);
+    private int Year => Calendar.Year;
+
+    private BelgianHoliday()
+    {
+        Calendar = new Calendar();
+    }
+    
+    private BelgianHoliday(Calendar calendar)
+    {
+        Calendar = calendar;
+    }
+
+    public static BelgianHoliday Create(Calendar calendar) => new BelgianHoliday(calendar);
+
+    public DateTime NewYear => new(Year, 1, 1);
 
     public DateTime Easter
     {
         get
         {
-            var year = _year;
+            var year = Year;
 
             // Cycle de méton
             var n = year % 19;
@@ -54,25 +66,19 @@ internal class BelgianHoliday : IBelgianHoliday
 
     public DateTime EasterMonday => Easter.AddDays(1);
     
-    public DateTime LaborDay => new(_year, 5, 1);
+    public DateTime LaborDay => new(Year, 5, 1);
     
     public DateTime Ascent => Easter.AddDays(39);
     
     public DateTime PentecostMonday => Easter.AddDays(50);
     
-    public DateTime NationalHoliday => new(_year, 7, 21);
+    public DateTime NationalHoliday => new(Year, 7, 21);
     
-    public DateTime Assumption => new(_year, 8, 15);
+    public DateTime Assumption => new(Year, 8, 15);
     
-    public DateTime Toussaint => new(_year, 11, 1);
+    public DateTime Toussaint => new(Year, 11, 1);
     
-    public DateTime Armistice1918 => new(_year, 11, 11);
+    public DateTime Armistice1918 => new(Year, 11, 11);
     
-    public DateTime Christmas => new(_year, 12, 25);
-
-    public IBelgianHoliday ForYear(int year)
-    {
-        _year = year;
-        return this;
-    }
+    public DateTime Christmas => new(Year, 12, 25);
 }

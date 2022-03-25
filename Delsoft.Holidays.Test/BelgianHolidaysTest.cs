@@ -13,7 +13,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 1, 1);
 
         // Assert
-        Holidays.Belgian.NewYear.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.NewYear.ShouldBeEquivalentTo(expected);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(2022, 04, 17);
 
         // Assert
-        Holidays.Belgian.ForYear(2022).Easter.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.ForYear(2022).Easter.ShouldBeEquivalentTo(expected);
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(2022, 4, 18);
         
         // Assert
-        Holidays.Belgian.ForYear(2022).EasterMonday.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.ForYear(2022).EasterMonday.ShouldBeEquivalentTo(expected);
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 5, 1);
         
         // Assert
-        Holidays.Belgian.LaborDay.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.LaborDay.ShouldBeEquivalentTo(expected);
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(2022, 5, 26);
         
         // Assert
-        Holidays.Belgian.ForYear(2022).Ascent.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.ForYear(2022).Ascent.ShouldBeEquivalentTo(expected);
     }
     
     [Fact]
@@ -63,7 +63,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(2022, 6, 6);
         
         // Assert
-        Holidays.Belgian.ForYear(2022).PentecostMonday.ShouldBeEquivalentTo(expected);
+        Calendar.ForYear(2022).BelgianHoliday.PentecostMonday.ShouldBeEquivalentTo(expected);
     }
     
     [Fact]
@@ -73,7 +73,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 7, 21);
         
         // Assert
-        Holidays.Belgian.NationalHoliday.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.NationalHoliday.ShouldBeEquivalentTo(expected);
     }
     
     [Fact]
@@ -83,7 +83,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 8, 15);
         
         // Assert
-        Holidays.Belgian.Assumption.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.Assumption.ShouldBeEquivalentTo(expected);
     }
     
     [Fact]
@@ -93,7 +93,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 11, 1);
         
         // Assert
-        Holidays.Belgian.Toussaint.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.Toussaint.ShouldBeEquivalentTo(expected);
     }
     
     [Fact]
@@ -103,7 +103,7 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 11, 11);
         
         // Assert
-        Holidays.Belgian.Armistice1918.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.Armistice1918.ShouldBeEquivalentTo(expected);
     }
     
     [Fact]
@@ -113,6 +113,6 @@ public class BelgianHolidaysTest
         var expected = new DateTime(DateTime.Today.Year, 12, 25);
         
         // Assert
-        Holidays.Belgian.Christmas.ShouldBeEquivalentTo(expected);
+        Calendar.BelgianHoliday.Christmas.ShouldBeEquivalentTo(expected);
     }
 }

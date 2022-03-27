@@ -5,8 +5,6 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
-
-    <RootNamespace>Delsoft.Holiday.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Delsoft.Holidays\Delsoft.Holidays.csproj" />
+    <ProjectReference Include="..\Delsoft.Calendars\Delsoft.Calendars.csproj" />
   </ItemGroup>
 
 </Project>

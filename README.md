@@ -1,8 +1,12 @@
-# Calendars
+# Holidays Calendar
 
-This librairy offers calendar features.
+## Create holiday calendar
 
-Choose your calendar properties with `Calendar.Now` for the current year, month and day or `Calendar.ForYear` for a specific year.
+Get holiday calendar by using `HolidayCalendar` class. This class contains all calendars. The following code retrieves the belgian holiday calendar. 
+
+```c#
+var cal = HolidayCalendar.Belgian
+```
 
 # Holiday
 

@@ -4,7 +4,7 @@ using Delsoft.Holidays.Models;
 
 namespace Delsoft.Holidays.Belgian;
 
-public class BelgianHolidayCalendar : HolidayCalendar, IBelgianHolidayCalendar
+public class BelgianHolidayCalendar : HolidayCalendar<BelgianHolidayCalendar>, IBelgianHolidayCalendar
 {
     public Holiday Easter => new()
     {

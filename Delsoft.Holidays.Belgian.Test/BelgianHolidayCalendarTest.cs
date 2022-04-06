@@ -2,7 +2,6 @@ using System;
 using System.Globalization;
 using System.Reflection;
 using Delsoft.Holidays.Models;
-using Microsoft.VisualStudio.TestPlatform.Common.Exceptions;
 using Shouldly;
 using Xunit;
 

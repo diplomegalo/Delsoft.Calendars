@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delsoft.Holidays.Belgian", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{744564E5-6927-46A3-9031-26D7888FD689}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delsoft.Holidays.Belgian.Test", "Delsoft.Holidays.Belgian.Test\Delsoft.Holidays.Belgian.Test.csproj", "{7961CDD8-6C1F-4947-B40A-405E328297C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +34,13 @@ Global
 		{02D9ED54-05E6-47ED-9FCD-CA2C7ACCFEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D9ED54-05E6-47ED-9FCD-CA2C7ACCFEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D9ED54-05E6-47ED-9FCD-CA2C7ACCFEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7961CDD8-6C1F-4947-B40A-405E328297C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7961CDD8-6C1F-4947-B40A-405E328297C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7961CDD8-6C1F-4947-B40A-405E328297C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7961CDD8-6C1F-4947-B40A-405E328297C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E4A037FD-AAA2-49A3-BC0B-BF0A9E86F713} = {744564E5-6927-46A3-9031-26D7888FD689}
+		{7961CDD8-6C1F-4947-B40A-405E328297C1} = {744564E5-6927-46A3-9031-26D7888FD689}
 	EndGlobalSection
 EndGlobal

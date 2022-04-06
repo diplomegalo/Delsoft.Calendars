@@ -1,6 +1,6 @@
 ﻿namespace Delsoft.Holidays.Extensions;
 
-public static class ChristianHolidays
+public static partial class HolidaysExtension
 {
     public static DateTime Easter(this HolidayCalendar holidayCalendar)
     {

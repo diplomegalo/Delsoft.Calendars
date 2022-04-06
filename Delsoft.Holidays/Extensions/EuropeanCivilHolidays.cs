@@ -1,6 +1,6 @@
 ﻿namespace Delsoft.Holidays.Extensions;
 
-public static class EuropeanCivilHolidays
+public static partial class HolidaysExtension
 {
     public static DateTime NewYear(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 1, 1);
     public static DateTime LaborDay(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 5, 1);

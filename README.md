@@ -1,12 +1,12 @@
 # Holidays Calendar
 
-This library offers a mean to retrieve holiday for a specific year. 
+This library offers a mean to retrieve holidays for a specific year. 
 
 Holidays can be get through calendars. A calendar is a group of holidays. The available calendars are placed in the `Delsoft.Holidays.Calendars` namespace.
 
 ## Create a calendar
 
-Get holiday calendar by using the static method `Create` of the `HolidayCalendar` class with the type of calendar sets as the generic type parameter of the method.
+Get holiday calendar by using the static method `Create` of the `HolidayCalendar` class with the type of calendar as generic type parameter of the method.
 
 ```c#
 IBelgianHolidayCalendar calendar = HolidayCalendar.Create<Calendars.BelgianHolidayCalendar>();
@@ -31,7 +31,7 @@ var holiday = calendar.NewYear;
 ### Set of holidays
 You can retrieve a list of holidays by using the `GetAll` or the `Get` method.
 
-The `Get` method allow you to select a custom subset of `Holiday` by passing wanted properties as parameters.
+The `Get` method allows you to select a custom subset of `Holiday` by passing wanted properties as parameters.
 
 ```c#
 var calendar = HolidayCalendar.Create<BelgianHolidayCalendar>();
@@ -57,9 +57,9 @@ var localName = holiday.LocalName;
 
 ## Holiday Calendar
 
-Calendars are stored in the `Delsoft.Holidays.Calendars`. Each of them are specifics and groups a set of holiday. They can own a reference to an other calendar which can be consider as a subset of the calendar.
+Calendars are stored in the `Delsoft.Holidays.Calendars`. Each of them are specifics and gathers a set of holiday. They can own a reference to another calendar which can be considered as a subset of the calendar.
 
-For example the Belgian calendar might own references to specifics calendar of each region : the Flanders, the Wallonia and the German-speaking community.
+For example, the specific calendar of a country might own references to calendars of its regions as the Belgian calendar might owns the Flanders, the Wallonia and the German-speaking community calendars.
 
 ### Belgian Holiday Calendar
 

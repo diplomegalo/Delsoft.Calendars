@@ -10,6 +10,10 @@
 
     <RepositoryUrl>https://github.com/diplomegalo/Delsoft.Calendars.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageVersion>0.1.0</PackageVersion>
+    <Title>Delsoft.Holidays</Title>
+    <Authors>diplomegalo</Authors>
+    <Description>Base librairy to manage holiday calendar</Description>
   </PropertyGroup>
 
 </Project>

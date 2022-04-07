@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Delsoft.Holidays.Calendars;
-using Delsoft.Holidays.Models;
 
 namespace Delsoft.Holidays.Test.Stubs;
 
@@ -21,21 +20,11 @@ internal class HolidayCalendarStub : HolidayCalendar<HolidayCalendarStub>
 
     public HolidayCalendarStub(int year) => Year = year;
 
-    public Holiday Holiday1 => new()
-    {
-        Date = Holiday1Date,
-        Name = Holiday1Name,
-        LocalName = Holiday1LocalName
-    };
+    public Models.Holidays Holiday1 => new(date: Holiday1Date, name: Holiday1Name, localName: Holiday1LocalName);
     
-    public Holiday Holiday2 => new()
-    {
-        Date = Holiday2Date,
-        Name = Holiday2Name,
-        LocalName = Holiday2LocalName
-    };
+    public Models.Holidays Holiday2 => new(date: Holiday2Date, name: Holiday2Name, localName: Holiday2LocalName);
 
     public override string[] GetCultures() => Array.Empty<string>();
 
-    public override IEnumerable<Holiday> GetAll() => Get(stub => stub.Holiday1, stub => stub.Holiday2);
+    public override IEnumerable<Models.Holidays> GetAll() => Get(stub => stub.Holiday1, stub => stub.Holiday2);
 }

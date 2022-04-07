@@ -6,5 +6,5 @@ public interface IHolidayCalendar
 {
     int Year { get; }
     string[] GetCultures();
-    IEnumerable<Holiday> GetAll();
+    IEnumerable<Models.Holidays> GetAll();
 }

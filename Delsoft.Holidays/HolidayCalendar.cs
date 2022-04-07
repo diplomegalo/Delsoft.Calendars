@@ -15,7 +15,7 @@ namespace Delsoft.Holidays.Calendars
 
         public abstract string[] GetCultures();
 
-        public abstract IEnumerable<Holiday> GetAll();
+        public abstract IEnumerable<Models.Holidays> GetAll();
 
         public static T Create<T>(int? year = null) 
             where T : HolidayCalendar<T>, new() => HolidayCalendar<T>.Create(year);
@@ -37,6 +37,6 @@ namespace Delsoft.Holidays.Calendars
             public static THolidayCalendar ForYear(int year) => new() { Year = year };
         }
     
-        public IEnumerable<Holiday> Get(params Func<THolidayCalendar, Holiday>[] args) => args.Select(func => func.Invoke((THolidayCalendar)this));
+        public IEnumerable<Models.Holidays> Get(params Func<THolidayCalendar, Models.Holidays>[] args) => args.Select(func => func.Invoke((THolidayCalendar)this));
     }
 }

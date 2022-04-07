@@ -4,15 +4,15 @@ namespace Delsoft.Holidays.Calendars;
 
 public interface IBelgianHolidayCalendar : IHolidayCalendar
 {
-    public Holiday Easter { get; }
-    public Holiday EasterMonday { get; }
-    public Holiday Ascent { get; }
-    public Holiday PentecostMonday { get; }
-    public Holiday Assumption { get; }
-    public Holiday Toussaint { get; }
-    public Holiday Christmas { get; }
-    public Holiday NewYear { get; }
-    public Holiday LaborDay { get; }
-    public Holiday NationalHoliday { get; }
-    public Holiday Armistice { get; }
+    public Models.Holidays Easter { get; }
+    public Models.Holidays EasterMonday { get; }
+    public Models.Holidays Ascent { get; }
+    public Models.Holidays PentecostMonday { get; }
+    public Models.Holidays Assumption { get; }
+    public Models.Holidays Toussaint { get; }
+    public Models.Holidays Christmas { get; }
+    public Models.Holidays NewYear { get; }
+    public Models.Holidays LaborDay { get; }
+    public Models.Holidays NationalHolidays { get; }
+    public Models.Holidays Armistice { get; }
 }

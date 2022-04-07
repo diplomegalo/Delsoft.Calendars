@@ -1,10 +1,10 @@
 using System;
-using Delsoft.Calendars.Test.Stubs;
 using Delsoft.Holidays.Extensions;
+using Delsoft.Holidays.Test.Stubs;
 using Shouldly;
 using Xunit;
 
-namespace Delsoft.Calendars.Test;
+namespace Delsoft.Holidays.Test;
 
 public class ChristianHolidaysTest
 {

@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
+using Delsoft.Holidays.Calendars;
 using Delsoft.Holidays.Models;
 using Shouldly;
 using Xunit;
@@ -9,13 +11,13 @@ namespace Delsoft.Holidays.Belgian.Test;
 
 public class BelgianHolidayCalendarTest
 {
-    private readonly BelgianHolidayCalendar _holidayCalendar;
+    private readonly IBelgianHolidayCalendar _holidayCalendar;
 
     public BelgianHolidayCalendarTest()
     {
         _holidayCalendar = HolidayCalendar.Create<BelgianHolidayCalendar>();
     }
-    
+
     [Theory]
     [InlineData("Easter", "fr", "Pâques", "Easter")]
     [InlineData("Easter", "nl", "Pasen", "Easter")]
@@ -64,16 +66,24 @@ public class BelgianHolidayCalendarTest
                                .GetProperty(propertyName)
                            ?? throw new InvalidOperationException($"Unable to find the {propertyName} property");
 
-        var methodName = propertyName == "NationalHoliday"
-            ? "BelgianNationalHoliday"
-            : propertyName;
-        
-        var methodInfo = typeof(Extensions.HolidaysExtension)
-                             .GetMethod(methodName, BindingFlags.Static | BindingFlags.Public)
+        var methodName = propertyName;
+        var type = typeof(Extensions.HolidaysExtension);
+        switch (propertyName)
+        {
+            case "NationalHoliday":
+            case "LaborDay":
+                type = typeof(Extensions.BelgianHolidaysExtension);
+                break;
+            case "Armistice":
+                methodName = nameof(Extensions.HolidaysExtension.Armistice1918);
+                break;
+        }
+
+        var methodInfo = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public)
                          ?? throw new InvalidOperationException($"Unable to find the {propertyName} method");
 
-        var expectedDate = methodInfo.Invoke(null, new object?[]{ _holidayCalendar });
-        
+        var expectedDate = methodInfo.Invoke(null, new object?[] { _holidayCalendar });
+
         // Act
         var holiday = (Holiday)propertyInfo.GetValue(_holidayCalendar)!;
 
@@ -82,5 +92,29 @@ public class BelgianHolidayCalendarTest
         holiday.Date.ShouldBe(expectedDate);
         holiday.Name.ShouldBe(name);
         holiday.LocalName.ShouldBe(localName);
+    }
+
+    
+    [Fact]
+    public void Can_Get_Culture()
+    {
+        // Act
+        var cultures = _holidayCalendar.GetCultures();
+        
+        // Assert
+        cultures.ShouldContain("fr");
+        cultures.ShouldContain("nl");
+        cultures.Length.ShouldBe(2);
+    }
+    
+    [Fact]
+    public void Can_Get_All()
+    {
+        // Act
+        var holidays = _holidayCalendar.GetAll()
+            .ToList();
+        
+        // Assert
+        holidays.Count.ShouldBe(11);
     }
 }

@@ -1,8 +1,9 @@
 using System;
-using Delsoft.Holidays;
+using System.Collections.Generic;
+using Delsoft.Holidays.Calendars;
 using Delsoft.Holidays.Models;
 
-namespace Delsoft.Calendars.Test.Stubs;
+namespace Delsoft.Holidays.Test.Stubs;
 
 internal class HolidayCalendarStub : HolidayCalendar<HolidayCalendarStub>
 {
@@ -33,4 +34,8 @@ internal class HolidayCalendarStub : HolidayCalendar<HolidayCalendarStub>
         Name = Holiday2Name,
         LocalName = Holiday2LocalName
     };
+
+    public override string[] GetCultures() => Array.Empty<string>();
+
+    public override IEnumerable<Holiday> GetAll() => Get(stub => stub.Holiday1, stub => stub.Holiday2);
 }

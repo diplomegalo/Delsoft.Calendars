@@ -55,7 +55,7 @@ var holiday = calendar.NewYear;
 var localName = holiday.LocalName;
 ```
 
-## Holiday Calendar
+## Available list of calendars
 
 Calendars are stored in the `Delsoft.Holidays.Calendars`. Each of them are specifics and gathers a set of holiday. They can own a reference to another calendar which can be considered as a subset of the calendar.
 

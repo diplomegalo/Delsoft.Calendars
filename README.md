@@ -61,6 +61,8 @@ Calendars are stored in the `Delsoft.Holidays.Calendars`. Each of them are speci
 
 For example, the specific calendar of a country might own references to calendars of its regions as the Belgian calendar might owns the Flanders, the Wallonia and the German-speaking community calendars.
 
-### Belgian Holiday Calendar
-
+Here found the list of calendars available : 
+| Type Calendar | |
+|--|--|
+| Belgian calendar | [IBelgianHolidayCalendar](./Delsoft.Holidays.Belgian/IBelgianHolidayCalendar.cs) | 
 

@@ -19,10 +19,8 @@ jobs:
         source-url: https://nuget.pkg.github.com/diplomegalo/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Build
-      run: dotnet build -c Release --no-restore
+      run: dotnet build -c Release
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Pack

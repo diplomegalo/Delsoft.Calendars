@@ -1,8 +1,8 @@
 ﻿namespace Delsoft.Holidays.Models;
 
-public class Holidays
+public class Holiday
 {
-    public Holidays(DateTime date, string name, string localName)
+    public Holiday(DateTime date, string name, string localName)
     {
         Name = name;
         Date = date;

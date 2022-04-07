@@ -8,44 +8,44 @@ namespace Delsoft.Holidays.Calendars;
 
 public class BelgianHolidayCalendar : HolidayCalendar<BelgianHolidayCalendar>, IBelgianHolidayCalendar
 {
-    public Models.Holidays Easter => new(date: this.Easter(), name: GetName(nameof(Easter)),
+    public Models.Holiday Easter => new(date: this.Easter(), name: GetName(nameof(Easter)),
         localName: Resources.Translation.Easter);
 
-    public Models.Holidays EasterMonday => new(date: this.EasterMonday(), name: GetName(nameof(EasterMonday)),
+    public Models.Holiday EasterMonday => new(date: this.EasterMonday(), name: GetName(nameof(EasterMonday)),
         localName: Resources.Translation.EasterMonday);
 
-    public Models.Holidays Ascent => new(date: this.Ascent(), name: GetName(nameof(Ascent)),
+    public Models.Holiday Ascent => new(date: this.Ascent(), name: GetName(nameof(Ascent)),
         localName: Resources.Translation.Ascent);
 
-    public Models.Holidays PentecostMonday => new(date: this.PentecostMonday(), name: GetName(nameof(PentecostMonday)),
+    public Models.Holiday PentecostMonday => new(date: this.PentecostMonday(), name: GetName(nameof(PentecostMonday)),
         localName: Resources.Translation.PentecostMonday);
 
-    public Models.Holidays Assumption => new(date: this.Assumption(), name: GetName(nameof(Assumption)),
+    public Models.Holiday Assumption => new(date: this.Assumption(), name: GetName(nameof(Assumption)),
         localName: Resources.Translation.Assumption);
 
-    public Models.Holidays Toussaint => new(date: this.Toussaint(), name: GetName(nameof(Toussaint)),
+    public Models.Holiday Toussaint => new(date: this.Toussaint(), name: GetName(nameof(Toussaint)),
         localName: Resources.Translation.Toussaint);
 
-    public Models.Holidays Christmas => new(date: this.Christmas(), name: GetName(nameof(Christmas)),
+    public Models.Holiday Christmas => new(date: this.Christmas(), name: GetName(nameof(Christmas)),
         localName: Resources.Translation.Christmas);
 
-    public Models.Holidays NewYear => new(date: this.NewYear(), name: GetName(nameof(NewYear)),
+    public Models.Holiday NewYear => new(date: this.NewYear(), name: GetName(nameof(NewYear)),
         localName: Resources.Translation.NewYear);
 
-    public Models.Holidays LaborDay => new(date: this.LaborDay(), name: GetName(nameof(LaborDay)),
+    public Models.Holiday LaborDay => new(date: this.LaborDay(), name: GetName(nameof(LaborDay)),
         localName: Resources.Translation.LaborDay);
 
-    public Models.Holidays NationalHolidays => new(date: this.NationalHoliday(), name: GetName(nameof(NationalHolidays)),
+    public Models.Holiday NationalHoliday => new(date: this.NationalHoliday(), name: GetName(nameof(NationalHoliday)),
         localName: Resources.Translation.NationalHoliday);
     
-    public Models.Holidays Armistice => new(date: this.Armistice1918(), name: GetName(nameof(Armistice)),
+    public Models.Holiday Armistice => new(date: this.Armistice1918(), name: GetName(nameof(Armistice)),
         localName: Resources.Translation.Armistice);
 
     public override string[] GetCultures() => new[] { "fr", "nl"};
 
-    public override IEnumerable<Models.Holidays> GetAll() =>
+    public override IEnumerable<Models.Holiday> GetAll() =>
         typeof(IBelgianHolidayCalendar).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-            .Select(info => (Models.Holidays)info.GetValue(this)!);
+            .Select(info => (Models.Holiday)info.GetValue(this)!);
 
     private static string GetName(string propertyName) =>
         Resources.Translation.ResourceManager.GetString(propertyName, CultureInfo.InvariantCulture)

@@ -85,7 +85,7 @@ public class BelgianHolidayCalendarTest
         var expectedDate = methodInfo.Invoke(null, new object?[] { _holidayCalendar });
 
         // Act
-        var holiday = (Models.Holidays)propertyInfo.GetValue(_holidayCalendar)!;
+        var holiday = (Models.Holiday)propertyInfo.GetValue(_holidayCalendar)!;
 
         // Assert
         holiday.ShouldNotBeNull();

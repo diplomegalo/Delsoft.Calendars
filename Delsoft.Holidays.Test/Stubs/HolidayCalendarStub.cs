@@ -20,11 +20,11 @@ internal class HolidayCalendarStub : HolidayCalendar<HolidayCalendarStub>
 
     public HolidayCalendarStub(int year) => Year = year;
 
-    public Models.Holidays Holiday1 => new(date: Holiday1Date, name: Holiday1Name, localName: Holiday1LocalName);
+    public Models.Holiday Holiday1 => new(date: Holiday1Date, name: Holiday1Name, localName: Holiday1LocalName);
     
-    public Models.Holidays Holiday2 => new(date: Holiday2Date, name: Holiday2Name, localName: Holiday2LocalName);
+    public Models.Holiday Holiday2 => new(date: Holiday2Date, name: Holiday2Name, localName: Holiday2LocalName);
 
     public override string[] GetCultures() => Array.Empty<string>();
 
-    public override IEnumerable<Models.Holidays> GetAll() => Get(stub => stub.Holiday1, stub => stub.Holiday2);
+    public override IEnumerable<Models.Holiday> GetAll() => Get(stub => stub.Holiday1, stub => stub.Holiday2);
 }

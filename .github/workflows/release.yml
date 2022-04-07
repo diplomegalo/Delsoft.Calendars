@@ -1,9 +1,9 @@
 name: Build, Pack and Publish
 
 on: 
-  push:
+  pull_request:
     branches:
-      - release/*
+      - master
       
 jobs:
   pack:
@@ -21,6 +21,6 @@ jobs:
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack Delsoft.Holidays.sln -c Release --no-build --verbosity normal --version-suffix beta
+      run: dotnet pack Delsoft.Holidays.sln -c Release --no-build --verbosity normal
     - name: Publish
-      run: dotnet nuget push */bin/Release/*.nupkg -s https://nuget.pkg.github.com/diplomegalo/index.json -k ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push */bin/Release/*.nupkg -s https://nuget.pkg.github.com/diplomegalo/index.json -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate

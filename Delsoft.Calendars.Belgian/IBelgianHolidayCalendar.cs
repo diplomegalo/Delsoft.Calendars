@@ -1,6 +1,6 @@
-using Delsoft.Holidays.Models;
+using Delsoft.Calendars.Models;
 
-namespace Delsoft.Holidays.Calendars;
+namespace Delsoft.Calendars.Calendars;
 
 public interface IBelgianHolidayCalendar : IHolidayCalendar
 {

@@ -1,12 +1,12 @@
-﻿using Delsoft.Holidays.Calendars;
+﻿using Delsoft.Calendars;
 
-namespace Delsoft.Holidays.Extensions;
+namespace Delsoft.Calendars.Extensions;
 
 public static partial class HolidaysExtension
 {
-    public static DateTime Easter(this HolidayCalendar holidayCalendar)
+    public static DateTime Easter(this HolidaysCalendar holidaysCalendar)
     {
-        var year = holidayCalendar.Year;
+        var year = holidaysCalendar.Year;
 
         // Cycle de méton
         var n = year % 19;
@@ -44,10 +44,10 @@ public static partial class HolidaysExtension
 
         return new DateTime(year, mois, jours + 1);
     }
-    public static DateTime EasterMonday(this HolidayCalendar holidayCalendar) => holidayCalendar.Easter().AddDays(1);
-    public static DateTime Ascent(this HolidayCalendar holidayCalendar) => holidayCalendar.Easter().AddDays(39);
-    public static DateTime PentecostMonday(this HolidayCalendar holidayCalendar) => holidayCalendar.Easter().AddDays(50);
-    public static DateTime Assumption(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 8, 15);
-    public static DateTime Toussaint(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 11, 1);
-    public static DateTime Christmas(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 12, 25);
+    public static DateTime EasterMonday(this HolidaysCalendar holidaysCalendar) => holidaysCalendar.Easter().AddDays(1);
+    public static DateTime Ascent(this HolidaysCalendar holidaysCalendar) => holidaysCalendar.Easter().AddDays(39);
+    public static DateTime PentecostMonday(this HolidaysCalendar holidaysCalendar) => holidaysCalendar.Easter().AddDays(50);
+    public static DateTime Assumption(this HolidaysCalendar holidaysCalendar) => new(holidaysCalendar.Year, 8, 15);
+    public static DateTime Toussaint(this HolidaysCalendar holidaysCalendar) => new(holidaysCalendar.Year, 11, 1);
+    public static DateTime Christmas(this HolidaysCalendar holidaysCalendar) => new(holidaysCalendar.Year, 12, 25);
 }

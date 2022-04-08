@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Delsoft.Holidays.Belgian.Resources {
+namespace Delsoft.Calendars.Belgian.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Delsoft.Holidays.Belgian.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Delsoft.Holidays.Belgian.Resources.Translation", typeof(Translation).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Delsoft.Calendars.Belgian.Resources.Translation", typeof(Translation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

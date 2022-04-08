@@ -1,8 +1,8 @@
-﻿using Delsoft.Holidays.Calendars;
+﻿using Delsoft.Calendars.Calendars;
 
-namespace Delsoft.Holidays.Extensions;
+namespace Delsoft.Calendars.Belgian.Holidays;
 
-public static class BelgianHolidaysExtension
+public static class HolidaysExtension
 {
     public static DateTime LaborDay(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 5, 1);
     public static DateTime NationalHoliday(this HolidayCalendar holidayCalendar) => new(holidayCalendar.Year, 7, 21);

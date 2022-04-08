@@ -2,12 +2,13 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using Delsoft.Holidays.Calendars;
-using Delsoft.Holidays.Models;
+using Delsoft.Calendars.Belgian.Holidays;
+using Delsoft.Calendars.Calendars;
+using Delsoft.Calendars.Models;
 using Shouldly;
 using Xunit;
 
-namespace Delsoft.Holidays.Belgian.Test;
+namespace Delsoft.Calendars.Belgian.Test;
 
 public class BelgianHolidayCalendarTest
 {
@@ -15,7 +16,7 @@ public class BelgianHolidayCalendarTest
 
     public BelgianHolidayCalendarTest()
     {
-        _holidayCalendar = HolidayCalendar.Create<BelgianHolidayCalendar>();
+        _holidayCalendar = HolidayCalendar.Create<HolidaysCalendar>();
     }
 
     [Theory]
@@ -72,7 +73,7 @@ public class BelgianHolidayCalendarTest
         {
             case "NationalHoliday":
             case "LaborDay":
-                type = typeof(Extensions.BelgianHolidaysExtension);
+                type = typeof(HolidaysExtension);
                 break;
             case "Armistice":
                 methodName = nameof(Extensions.HolidaysExtension.Armistice1918);

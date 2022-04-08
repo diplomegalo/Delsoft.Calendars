@@ -1,20 +1,20 @@
 using System;
-using Delsoft.Holidays.Extensions;
-using Delsoft.Holidays.Test.Stubs;
+using Delsoft.Calendars.Test.Stubs;
+using Delsoft.Calendars.Extensions;
 using Shouldly;
 using Xunit;
 
-namespace Delsoft.Holidays.Test;
+namespace Delsoft.Calendars.Test;
 
 public class ChristianHolidaysTest
 {
-    private readonly HolidayCalendarStub _currentYear;
-    private readonly HolidayCalendarStub _year2022;
+    private readonly HolidaysCalendarStub _currentYear;
+    private readonly HolidaysCalendarStub _year2022;
 
     public ChristianHolidaysTest()
     {
-        _currentYear = new HolidayCalendarStub();
-        _year2022 = new HolidayCalendarStub(2022);
+        _currentYear = new HolidaysCalendarStub();
+        _year2022 = new HolidaysCalendarStub(2022);
     }
  
     [Fact]

@@ -1,18 +1,18 @@
 ﻿using System;
-using Delsoft.Holidays.Extensions;
-using Delsoft.Holidays.Test.Stubs;
+using Delsoft.Calendars.Test.Stubs;
+using Delsoft.Calendars.Extensions;
 using Shouldly;
 using Xunit;
 
-namespace Delsoft.Holidays.Test;
+namespace Delsoft.Calendars.Test;
 
 public class EuropeanCivilianHolidaysTest
 {
-    private readonly HolidayCalendarStub _currentYear;
+    private readonly HolidaysCalendarStub _currentYear;
 
     public EuropeanCivilianHolidaysTest()
     {
-        _currentYear = new HolidayCalendarStub();
+        _currentYear = new HolidaysCalendarStub();
     }
     
     [Fact]

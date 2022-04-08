@@ -1,4 +1,4 @@
-﻿namespace Delsoft.Holidays.Models;
+﻿namespace Delsoft.Calendars.Models;
 
 public class Holiday
 {

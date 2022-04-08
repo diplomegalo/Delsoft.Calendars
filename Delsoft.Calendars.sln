@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delsoft.Calendars.Belgian",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{744564E5-6927-46A3-9031-26D7888FD689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delsoft.Holidays.Belgian.Test", "Delsoft.Holidays.Belgian.Test\Delsoft.Holidays.Belgian.Test.csproj", "{7961CDD8-6C1F-4947-B40A-405E328297C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delsoft.Calendars.Belgian.Test", "Delsoft.Calendars.Belgian.Test\Delsoft.Calendars.Belgian.Test.csproj", "{7961CDD8-6C1F-4947-B40A-405E328297C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

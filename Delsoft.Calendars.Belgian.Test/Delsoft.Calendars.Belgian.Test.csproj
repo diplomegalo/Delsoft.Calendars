@@ -28,7 +28,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Delsoft.Calendars.Belgian\Delsoft.Calendars.Belgian.csproj" />
       <ProjectReference Include="..\Delsoft.Calendars\Delsoft.Calendars.csproj" />
-      <ProjectReference Include="..\Delsoft.Holidays\Delsoft.Holidays.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Delsoft.Calendars.Belgian.Holidays;
+using Delsoft.Calendars.Holidays;
 using Shouldly;
 using Xunit;
 

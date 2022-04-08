@@ -1,4 +1,6 @@
-﻿namespace Delsoft.Calendars.Belgian.Holidays;
+﻿using Delsoft.Calendars.Holidays;
+
+namespace Delsoft.Calendars.Belgian.Holidays;
 
 public static class NationalHolidays
 {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Delsoft.Calendars;
+using Delsoft.Calendars.Holidays;
 
 namespace Delsoft.Calendars.Test.Stubs;
 

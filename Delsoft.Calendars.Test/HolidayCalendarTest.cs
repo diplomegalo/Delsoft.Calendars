@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Delsoft.Calendars;
+using Delsoft.Calendars.Holidays;
 using Delsoft.Calendars.Test.Stubs;
 using Shouldly;
 using Xunit;

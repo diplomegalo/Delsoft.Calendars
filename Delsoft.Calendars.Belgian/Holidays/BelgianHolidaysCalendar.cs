@@ -1,12 +1,9 @@
 using System.Globalization;
 using System.Reflection;
-using Delsoft.Calendars.Belgian;
 using Delsoft.Calendars.Belgian.Resources;
-using Delsoft.Calendars.Belgian.Holidays;
 using Delsoft.Calendars.Holidays;
-using Resources = Delsoft.Calendars.Belgian.Resources;
 
-namespace Delsoft.Calendars;
+namespace Delsoft.Calendars.Belgian.Holidays;
 
 public class BelgianHolidaysCalendar : HolidaysCalendar<BelgianHolidaysCalendar>, IBelgianHolidaysCalendar
 {

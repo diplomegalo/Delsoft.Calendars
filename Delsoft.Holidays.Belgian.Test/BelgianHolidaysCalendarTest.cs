@@ -93,7 +93,6 @@ public class BelgianHolidaysCalendarTest
         holiday.Name.ShouldBe(name);
         holiday.LocalName.ShouldBe(localName);
     }
-
     
     [Fact]
     public void Can_Get_Culture()

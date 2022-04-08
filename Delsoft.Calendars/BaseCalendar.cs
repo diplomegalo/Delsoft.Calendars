@@ -1,4 +1,6 @@
-﻿namespace Delsoft.Calendars;
+﻿using Delsoft.Calendars.Holidays;
+
+namespace Delsoft.Calendars;
 
 public abstract class BaseCalendar
 {

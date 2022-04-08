@@ -18,4 +18,19 @@ public class CalendarTest
         calendar.ShouldNotBeNull();
         calendar.Holidays.ShouldNotBeNull();
     }
+    
+    [Fact]
+    public void Can_Create_Calendar_With_Specific_Year()
+    {
+        // Arrange
+        var year = 2002;
+        
+        // Act
+        var calendar = BaseCalendar.Create<CalendarStub>(year);
+        
+        // Assert 
+        calendar.ShouldNotBeNull();
+        calendar.Holidays.ShouldNotBeNull();
+        calendar.Holidays.Year.ShouldBe(year);
+    }
 }

@@ -1,6 +1,6 @@
 using System;
 using Delsoft.Calendars.Test.Stubs;
-using Delsoft.Calendars.Extensions;
+using Delsoft.Calendars.Holidays;
 using Shouldly;
 using Xunit;
 

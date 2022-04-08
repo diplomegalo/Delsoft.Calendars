@@ -17,6 +17,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Delsoft.Calendars\Delsoft.Calendars.csproj" />
       <ProjectReference Include="..\Delsoft.Holidays\Delsoft.Holidays.csproj" />
     </ItemGroup>
 

@@ -1,6 +1,4 @@
-﻿using Delsoft.Calendars;
-
-namespace Delsoft.Calendars.Extensions;
+﻿namespace Delsoft.Calendars.Holidays;
 
 public static partial class HolidaysExtension
 {

@@ -3,20 +3,19 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Delsoft.Calendars.Belgian.Holidays;
-using Delsoft.Calendars.Calendars;
-using Delsoft.Calendars.Models;
+using Delsoft.Calendars.Holidays;
 using Shouldly;
 using Xunit;
 
 namespace Delsoft.Calendars.Belgian.Test;
 
-public class BelgianHolidayCalendarTest
+public class BelgianHolidaysCalendarTest
 {
-    private readonly IBelgianHolidayCalendar _holidayCalendar;
+    private readonly IBelgianHolidaysCalendar _holidayCalendar;
 
-    public BelgianHolidayCalendarTest()
+    public BelgianHolidaysCalendarTest()
     {
-        _holidayCalendar = HolidayCalendar.Create<HolidaysCalendar>();
+        _holidayCalendar = HolidaysCalendar.Create<BelgianHolidaysCalendar>();
     }
 
     [Theory]
@@ -63,20 +62,20 @@ public class BelgianHolidayCalendarTest
             ? CultureInfo.CreateSpecificCulture(culture)
             : CultureInfo.InvariantCulture;
 
-        var propertyInfo = typeof(IBelgianHolidayCalendar)
+        var propertyInfo = typeof(IBelgianHolidaysCalendar)
                                .GetProperty(propertyName)
                            ?? throw new InvalidOperationException($"Unable to find the {propertyName} property");
 
         var methodName = propertyName;
-        var type = typeof(Extensions.HolidaysExtension);
+        var type = typeof(HolidaysExtension);
         switch (propertyName)
         {
             case "NationalHoliday":
             case "LaborDay":
-                type = typeof(HolidaysExtension);
+                type = typeof(NationalHolidays);
                 break;
             case "Armistice":
-                methodName = nameof(Extensions.HolidaysExtension.Armistice1918);
+                methodName = nameof(HolidaysExtension.Armistice1918);
                 break;
         }
 

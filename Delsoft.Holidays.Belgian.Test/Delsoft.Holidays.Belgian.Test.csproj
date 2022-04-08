@@ -5,6 +5,10 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
+
+        <AssemblyName>Delsoft.Calendars.Belgian.Test</AssemblyName>
+
+        <RootNamespace>Delsoft.Calendars.Belgian.Test</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,6 +27,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Delsoft.Calendars.Belgian\Delsoft.Calendars.Belgian.csproj" />
+      <ProjectReference Include="..\Delsoft.Calendars\Delsoft.Calendars.csproj" />
       <ProjectReference Include="..\Delsoft.Holidays\Delsoft.Holidays.csproj" />
     </ItemGroup>
 

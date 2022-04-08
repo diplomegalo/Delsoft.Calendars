@@ -1,19 +1,17 @@
 ﻿using System;
 using Delsoft.Calendars.Belgian.Holidays;
-using Delsoft.Calendars.Calendars;
-using Delsoft.Calendars.Extensions;
 using Shouldly;
 using Xunit;
 
 namespace Delsoft.Calendars.Belgian.Test;
 
-public class BelgianHolidaysExtensionTest
+public class NationalHolidaysTest
 {
-    private readonly HolidaysCalendar _currentYear;
+    private readonly BelgianHolidaysCalendar _currentYear;
 
-    public BelgianHolidaysExtensionTest()
+    public NationalHolidaysTest()
     {
-        _currentYear = HolidayCalendar.Create<HolidaysCalendar>();
+        _currentYear = HolidaysCalendar.Create<BelgianHolidaysCalendar>();
     }
     
     [Fact]

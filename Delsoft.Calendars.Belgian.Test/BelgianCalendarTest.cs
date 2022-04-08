@@ -11,7 +11,7 @@ public class BelgianCalendarTest
         // Arrange
         
         // Act
-        var calendar = BaseCalendar.Create<BelgianCalendar>();
+        var calendar = CalendarFactory.Create<BelgianBaseCalendar>();
 
         // Assert
         calendar.ShouldNotBeNull();

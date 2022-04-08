@@ -12,7 +12,7 @@ public class CalendarTest
         // Arrange
         
         // Act
-        var calendar = BaseCalendar.Create<CalendarStub>();
+        var calendar = CalendarFactory.Create<BaseCalendarStub>();
         
         // Assert 
         calendar.ShouldNotBeNull();
@@ -26,7 +26,7 @@ public class CalendarTest
         var year = 2002;
         
         // Act
-        var calendar = BaseCalendar.Create<CalendarStub>(year);
+        var calendar = CalendarFactory.Create<BaseCalendarStub>(year);
         
         // Assert 
         calendar.ShouldNotBeNull();

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Easter" xml:space="preserve">
+        <value>Easter</value>
+    </data>
+    <data name="EasterMonday" xml:space="preserve">
+        <value>Easter Monday</value>
+    </data>
+    <data name="Ascent" xml:space="preserve">
+        <value>Ascent</value>
+    </data>
+    <data name="PentecostMonday" xml:space="preserve">
+        <value>Pentecost Monday</value>
+    </data>
+    <data name="Assumption" xml:space="preserve">
+        <value>Assumption</value>
+    </data>
+    <data name="Toussaint" xml:space="preserve">
+        <value>Toussaint</value>
+    </data>
+    <data name="Christmas" xml:space="preserve">
+        <value>Christmas</value>
+    </data>
+    <data name="NewYear" xml:space="preserve">
+        <value>New Year</value>
+    </data>
+    <data name="LaborDay" xml:space="preserve">
+        <value>Labor Day</value>
+    </data>
+    <data name="NationalHoliday" xml:space="preserve">
+        <value>National Holiday</value>
+    </data>
+    <data name="Armistice" xml:space="preserve">
+        <value>Armistice</value>
+    </data>
+</root>

@@ -1,14 +1,11 @@
-name: .NET
+name: Build develop
 
 on:
   push:
     branches: 
       - feature/*
-      - release/*
-  pull_request:
-    branches: 
-      - master
-
+      - develop
+      
 jobs:
   build:
 

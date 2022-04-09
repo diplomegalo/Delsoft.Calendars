@@ -1,31 +1,48 @@
-# Holidays Calendar
+# Delsoft.Calendar
 
-This library offers a mean to retrieve holidays for a specific year. 
+This library offers a means to
+- retrieve holidays calendar 
 
-Holidays can be get through calendars. A calendar is a group of holidays. The available calendars are placed in the `Delsoft.Holidays.Calendars` namespace.
+for a specific year.
 
 ## Create a calendar
 
-Get holiday calendar by using the static method `Create` of the `HolidayCalendar` class with the type of calendar as generic type parameter of the method.
+Create a calendar by using the static method `Create` of the `CalendarFactory` class with the type of calendar you want as generic type parameter of the method.
 
 ```c#
-IBelgianHolidayCalendar calendar = HolidayCalendar.Create<Calendars.BelgianHolidayCalendar>();
+var calendar = CalendarFactory.Create<BelgianCalendar>();
 ```
 
 You can choose a specific year for the calendar by passing the value as parameter.  
 
 ```c#
-var calendar = HolidayCalendar.Create<BelgianHolidayCalendar>(2002);
+var calendar = CalendarFactory.Create<BelgianCalendar>(2002);
 ```
 
-## Holiday
+## Holidays Calendar
 
-### Holiday property
-A calendar defines properties returning a `Holiday` object. The `Holiday` model defines the `Date`, the `Name` and the `LocalName` of the holiday. The `LocalName` depends on the `CurrentUICulture` value of the current thread.  
+The `BaseCalendar` class defines the `Holidays` property which returns a `HolidaysCalendar`. A `HolidaysCalendar` gather a set of properties of specific holidays.
 
 ```c#
-var calendar = HolidayCalendar.Create<BelgianHolidayCalendar>();
-var holiday = calendar.NewYear;
+var holidaysCalendar = calendar.Holidays
+```
+
+Properties of `HolidaysCalendar` returns a `Holiday` object. The `Holiday` model defines 
+- The `Date` property which contains the date of the holidays, 
+- The `Name` property which contains the name of the holidays
+- The `LocalName` method which returns the localized name of the holidays. 
+
+The `LocalName` depends on the `CurrentUICulture` value of the current thread.  
+
+```c#
+CultureInfo.CurrentUICulture = CultureInfo.CreateSpecificCulture("fr");
+var easter = calendar.Holidays.Easter;
+Console.WriteLine($"{easter.Name} happens on {easter.Date.ToShortDateString()} and is said {easter.LocalName()} in {CultureInfo.CurrentUICulture.EnglishName}");
+
+/*
+ * Produces the following output:
+ * Easter happens on 17/04/2022 and is said Pâques in French (France)
+ */
 ```
 
 ### Set of holidays
@@ -34,8 +51,7 @@ You can retrieve a list of holidays by using the `GetAll` or the `Get` method.
 The `Get` method allows you to select a custom subset of `Holiday` by passing wanted properties as parameters.
 
 ```c#
-var calendar = HolidayCalendar.Create<BelgianHolidayCalendar>();
-var subset = calendar.Get(cal => cal.LaborDay, cal => cal.Easter);
+var subset = holidaysCalendar.Get(cal => cal.LaborDay, cal => cal.Easter);
 ```
 
 ## Localisation
@@ -43,26 +59,14 @@ var subset = calendar.Get(cal => cal.LaborDay, cal => cal.Easter);
 You can localize the `LocalName` value of the `Holiday` by setting the `CurrentUICulture` value. The culture available are depending on the calendar.
 
 ```c#
-// Get available cultures for a calendar
-var calendar = HolidayCalendar.Create<BelgianHolidayCalendar>();
-var culture = calendar.GetCultures()[0];
-
-// Overrides the current value of the UI culture with a specific value.
-CultureInfo.CurrentUICulture = CultureInfo.CreateSpecificCulture(culture);
-
-// Get the local name of the holiday
-var holiday = calendar.NewYear;
-var localName = holiday.LocalName;
+foreach (var holiday in calendar.Holidays.GetAll())
+{
+    var line = $"{holiday.Name}: {holiday.Date.ToShortDateString()}{Environment.NewLine}";
+    foreach (var culture in calendar.Holidays.GetCultures())
+    {
+        CultureInfo.CurrentUICulture = CultureInfo.CreateSpecificCulture(culture);
+        line += $"\t{culture}: {holiday.LocalName()}{Environment.NewLine}";
+    }
+    Console.WriteLine(line);
+}
 ```
-
-## Available list of calendars
-
-Calendars are stored in the `Delsoft.Holidays.Calendars`. Each of them are specifics and gathers a set of holiday. They can own a reference to another calendar which can be considered as a subset of the calendar.
-
-For example, the specific calendar of a country might own references to calendars of its regions as the Belgian calendar might owns the Flanders, the Wallonia and the German-speaking community calendars.
-
-Here found the list of calendars available : 
-| Type Calendar | |
-|--|--|
-| Belgian calendar | [IBelgianHolidayCalendar](./Delsoft.Holidays.Belgian/IBelgianHolidayCalendar.cs) | 
-

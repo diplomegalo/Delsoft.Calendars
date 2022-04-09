@@ -9,9 +9,9 @@ public class BelgianCalendarTest
     public void Can_Create_Belgian_Calendar()
     {
         // Arrange
-        
+
         // Act
-        var calendar = CalendarFactory.Create<BelgianBaseCalendar>();
+        var calendar = CalendarFactory.Create<BelgianCalendar>();
 
         // Assert
         calendar.ShouldNotBeNull();

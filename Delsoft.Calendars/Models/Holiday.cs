@@ -2,7 +2,7 @@
 
 public class Holiday
 {
-    public Holiday(DateTime date, string name, string localName)
+    public Holiday(DateTime date, string name, Func<string> localName)
     {
         Name = name;
         Date = date;
@@ -11,5 +11,5 @@ public class Holiday
 
     public string Name { get; }
     public DateTime Date { get; }
-    public string LocalName { get; }
+    public Func<string> LocalName { get; }
 }

@@ -88,28 +88,28 @@ public class BelgianHolidaysCalendarTest
         holiday.ShouldNotBeNull();
         holiday.Date.ShouldBe(expectedDate);
         holiday.Name.ShouldBe(name);
-        holiday.LocalName.ShouldBe(localName);
+        holiday.LocalName().ShouldBe(localName);
     }
-    
+
     [Fact]
     public void Can_Get_Culture()
     {
         // Act
         var cultures = _holidayCalendar.GetCultures();
-        
+
         // Assert
         cultures.ShouldContain("fr");
         cultures.ShouldContain("nl");
         cultures.Length.ShouldBe(2);
     }
-    
+
     [Fact]
     public void Can_Get_All()
     {
         // Act
         var holidays = _holidayCalendar.GetAll()
             .ToList();
-        
+
         // Assert
         holidays.Count.ShouldBe(11);
     }

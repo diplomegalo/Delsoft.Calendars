@@ -48,9 +48,9 @@ public class HolidayCalendarTest
         list.Count.ShouldBe(2);
         list.First().Date.ShouldBe(HolidaysCalendarStub.Holiday1Date);
         list.First().Name.ShouldBe(HolidaysCalendarStub.Holiday1Name);
-        list.First().LocalName().ShouldBe(HolidaysCalendarStub.Holiday1LocalName);
+        list.First().LocalName.ShouldBe(HolidaysCalendarStub.Holiday1LocalName);
         list.ElementAt(1).Date.ShouldBe(HolidaysCalendarStub.Holiday2Date);
         list.ElementAt(1).Name.ShouldBe(HolidaysCalendarStub.Holiday2Name);
-        list.ElementAt(1).LocalName().ShouldBe(HolidaysCalendarStub.Holiday2LocalName);
+        list.ElementAt(1).LocalName.ShouldBe(HolidaysCalendarStub.Holiday2LocalName);
     }
 }

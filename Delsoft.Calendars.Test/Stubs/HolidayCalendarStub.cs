@@ -21,7 +21,7 @@ internal class HolidaysCalendarStub : HolidaysCalendar<HolidaysCalendarStub>
 
     public HolidaysCalendarStub(int year) => Year = year;
 
-    public Models.Holiday Holiday1 => new(date: Holiday1Date, name: Holiday1Name, localName: () => Holiday1LocalName);
+    public Models.Holiday Holiday1 => new(date: Holiday1Date, name: Holiday1Name, localName: () => Resources.Translation.Holiday1);
 
     public Models.Holiday Holiday2 => new(date: Holiday2Date, name: Holiday2Name, localName: () => Holiday2LocalName);
 

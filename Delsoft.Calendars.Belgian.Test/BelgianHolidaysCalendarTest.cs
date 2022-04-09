@@ -88,7 +88,7 @@ public class BelgianHolidaysCalendarTest
         holiday.ShouldNotBeNull();
         holiday.Date.ShouldBe(expectedDate);
         holiday.Name.ShouldBe(name);
-        holiday.LocalName().ShouldBe(localName);
+        holiday.LocalName.ShouldBe(localName);
     }
 
     [Fact]

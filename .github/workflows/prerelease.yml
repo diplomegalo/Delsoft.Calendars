@@ -22,4 +22,4 @@ jobs:
     - name: Pack
       run: dotnet pack Delsoft.Calendars.sln -c Release --no-build --verbosity normal --version-suffix beta
     - name: Publish
-      run: dotnet nuget push */bin/Release/*.nupkg -s https://nuget.pkg.github.com/diplomegalo/index.json -k ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push */bin/Release/*.nupkg -s https://nuget.pkg.github.com/diplomegalo/index.json -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate

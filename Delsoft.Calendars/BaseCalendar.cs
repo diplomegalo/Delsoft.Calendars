@@ -4,7 +4,6 @@ namespace Delsoft.Calendars;
 
 public abstract class BaseCalendar
 {
-    
 }
 
 public abstract class BaseCalendar<THolidayCalendar> : BaseCalendar

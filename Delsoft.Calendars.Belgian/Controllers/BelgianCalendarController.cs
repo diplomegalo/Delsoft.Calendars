@@ -7,5 +7,5 @@ namespace Delsoft.Calendars.Belgian.Controllers;
 public class BelgianCalendarController : ControllerBase
 {
     [HttpGet]
-    public IActionResult GetAll() => this.Ok(CalendarFactory.Create<BelgianCalendar>().Holidays);
+    public IActionResult GetAll() => this.Ok(CalendarFactory.Create<BelgianCalendar>().Holidays.GetAll());
 }

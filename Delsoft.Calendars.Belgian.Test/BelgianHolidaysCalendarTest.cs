@@ -15,7 +15,7 @@ public class BelgianHolidaysCalendarTest
 
     public BelgianHolidaysCalendarTest()
     {
-        _holidayCalendar = HolidaysCalendar.Create<BelgianHolidaysCalendar>();
+        _holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>();
     }
 
     [Theory]

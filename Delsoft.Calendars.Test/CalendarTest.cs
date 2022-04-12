@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Globalization;
 using Delsoft.Calendars.Test.Stubs;
 using Shouldly;
@@ -12,6 +12,7 @@ public class CalendarTest
     public void Can_Create_Calendar()
     {
         // Arrange
+        var year = DateTime.Today.Year;
 
         // Act
         var calendar = CalendarFactory.Create<CalendarStub>();
@@ -19,6 +20,30 @@ public class CalendarTest
         // Assert
         calendar.ShouldNotBeNull();
         calendar.Holidays.ShouldNotBeNull();
+        calendar.ShouldBeAssignableTo(typeof(CalendarStub));
+        calendar.ShouldBeAssignableTo(typeof(ICalendarStub));
+
+        // TODO : Move year property to the BaseCalendar class.
+        calendar.Holidays.Year.ShouldBe(year);
+    }
+
+    [Fact]
+    public void Can_Create_Calendar_Interface()
+    {
+        // Arrange
+        var year = DateTime.Today.Year;
+
+        // Act
+        var calendar = CalendarFactory.Create<ICalendarStub>();
+
+        // Assert
+        calendar.ShouldNotBeNull();
+        calendar.Holidays.ShouldNotBeNull();
+        calendar.ShouldBeAssignableTo(typeof(CalendarStub));
+        calendar.ShouldBeAssignableTo(typeof(ICalendarStub));
+
+        // TODO : Move year property to the BaseCalendar class.
+        calendar.Holidays.Year.ShouldBe(year);
     }
 
     [Fact]
@@ -34,6 +59,20 @@ public class CalendarTest
         calendar.ShouldNotBeNull();
         calendar.Holidays.ShouldNotBeNull();
         calendar.Holidays.Year.ShouldBe(year);
+    }
+
+    [Fact]
+    public void Can_Create_Factory_From_Instance()
+    {
+        // Arrange
+        var factory = new CalendarFactory<CalendarStub>();
+
+        // Act
+        var stub = factory.Create();
+
+        // Assert
+        stub.ShouldNotBeNull();
+        stub.Holidays.ShouldNotBeNull();
     }
 
     [Fact]

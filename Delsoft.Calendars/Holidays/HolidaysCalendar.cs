@@ -1,34 +1,50 @@
-﻿using Delsoft.Calendars.Models;
+﻿using System.Reflection;
+using Delsoft.Calendars.Models;
 
 namespace Delsoft.Calendars.Holidays;
 
 public abstract class HolidaysCalendar : IHolidaysCalendar
 {
+    public static class Factory
+    {
+        public static THolidaysCalendar Create<THolidaysCalendar>(int? year = null)
+            where THolidaysCalendar : IHolidaysCalendar
+        {
+            var type = typeof(THolidaysCalendar);
+            if (type.IsInterface)
+            {
+                type = type.Assembly.GetTypes().Single(type =>
+                    typeof(THolidaysCalendar).IsAssignableFrom(type)
+                    && !type.IsInterface);
+            }
+
+            return year == null
+                ? (THolidaysCalendar)Activator.CreateInstance(type)
+                : (THolidaysCalendar)Activator.CreateInstance(type, year);
+        }
+    }
+
     public int Year { get; protected init; }
 
     public abstract string[] GetCultures();
-
-    public abstract IEnumerable<Holiday> GetAll();
-
-    public static T Create<T>(int? year = null) 
-        where T : HolidaysCalendar<T>, new() => HolidaysCalendar<T>.Create(year);
 }
 
-public abstract class HolidaysCalendar<THolidaysCalendar> : HolidaysCalendar
-    where THolidaysCalendar : HolidaysCalendar<THolidaysCalendar>, new()
+public abstract class HolidaysCalendar<THolidaysCalendar> : HolidaysCalendar, IHolidaysCalendar<THolidaysCalendar>
+    where THolidaysCalendar: HolidaysCalendar<THolidaysCalendar>
 {
-    public static THolidaysCalendar Create(int? year = null) => year == null
-        ? HolidayCalendarFactory.Default
-        : HolidayCalendarFactory.ForYear(year.Value);
-    
     protected HolidaysCalendar() => Year = DateTime.Today.Year;
-    
-    private static class HolidayCalendarFactory
-    {
-        public static THolidaysCalendar Default => new();
 
-        public static THolidaysCalendar ForYear(int year) => new() { Year = year };
+    public IEnumerable<Holiday> Get(params Func<THolidaysCalendar, Holiday>[] args)
+         => args.Select(func => func.Invoke((THolidaysCalendar)this));
+
+    public IEnumerable<Holiday> Get(params string[] args)
+    {
+        var all = this.GetAll().ToDictionary(holiday => holiday.Name, holiday => holiday);
+        return args.Select(key => all[key]);
     }
-    
-    public IEnumerable<Holiday> Get(params Func<THolidaysCalendar, Holiday>[] args) => args.Select(func => func.Invoke((THolidaysCalendar)this));
+
+    public IEnumerable<Holiday> GetAll() =>
+        typeof(THolidaysCalendar).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+            .Where(info => info.PropertyType == typeof(Holiday))
+            .Select(info => (Models.Holiday)info.GetValue(this)!);
 }

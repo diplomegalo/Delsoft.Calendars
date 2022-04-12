@@ -2,6 +2,7 @@
 
 namespace Delsoft.Calendars.Belgian;
 
-public class BelgianCalendar : BaseCalendar<BelgianHolidaysCalendar>
+public class BelgianCalendar : BaseCalendar<IBelgianHolidaysCalendar>, IBelgianCalendar
 {
+
 }

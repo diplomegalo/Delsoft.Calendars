@@ -42,10 +42,6 @@ public class BelgianHolidaysCalendar : HolidaysCalendar<BelgianHolidaysCalendar>
 
     public override string[] GetCultures() => new[] { "fr", "nl"};
 
-    public override IEnumerable<Models.Holiday> GetAll() =>
-        typeof(IBelgianHolidaysCalendar).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-            .Select(info => (Models.Holiday)info.GetValue(this)!);
-
     private static string GetName(string propertyName) =>
         Translation.ResourceManager.GetString(propertyName, CultureInfo.InvariantCulture)
         ?? throw new InvalidOperationException("Cannot set property with null value");

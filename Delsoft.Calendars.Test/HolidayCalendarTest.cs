@@ -64,18 +64,24 @@ public class HolidayCalendarTest
     {
         // Arrange
         var calendar = HolidaysCalendar.Factory.Create<IHolidaysCalendarStub>();
-        var name = Resources.Translation.ResourceManager.GetString(nameof(calendar.Holiday1), CultureInfo.InvariantCulture)
+        var holidays1Name = Resources.Translation.ResourceManager.GetString(nameof(calendar.Holiday1), CultureInfo.InvariantCulture)
             ?? throw new InvalidOperationException($"Cannot find translation for {nameof(calendar.Holiday1)}");
-        var localName = Resources.Translation.Holiday1;
+        var holidays2Name = Resources.Translation.ResourceManager.GetString(nameof(calendar.Holiday2), CultureInfo.InvariantCulture)
+                            ?? throw new InvalidOperationException($"Cannot find translation for {nameof(calendar.Holiday2)}");
+        var holiday1LocalName = Resources.Translation.Holiday1;
+        var holiday2LocalName = Resources.Translation.Holiday2;
 
         // Act
-        var holidays = calendar.Get(name)
+        var holidays = calendar.Get(holidays1Name, holidays2Name)
             .ToList();
 
         // Assert
-        holidays.ShouldBeUnique();
-        holidays.Single().Date.ShouldBe(calendar.Holiday1.Date);
-        holidays.Single().Name.ShouldBe(calendar.Holiday1.Name);
-        holidays.Single().LocalName.ShouldBe(localName);
+        holidays.Count.ShouldBe(2);
+        holidays.ElementAt(0).Date.ShouldBe(calendar.Holiday1.Date);
+        holidays.ElementAt(0).Name.ShouldBe(calendar.Holiday1.Name);
+        holidays.ElementAt(0).LocalName.ShouldBe(holiday1LocalName);
+        holidays.ElementAt(1).Date.ShouldBe(calendar.Holiday2.Date);
+        holidays.ElementAt(1).Name.ShouldBe(calendar.Holiday2.Name);
+        holidays.ElementAt(1).LocalName.ShouldBe(holiday2LocalName);
     }
 }

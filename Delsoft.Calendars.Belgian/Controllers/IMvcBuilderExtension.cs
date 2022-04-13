@@ -2,7 +2,7 @@
 
 namespace Delsoft.Calendars.Belgian.Controllers;
 
-public static class IMvcBuilderExtension
+public static class MvcBuilderExtension
 {
     public static IMvcBuilder AddBelgianCalendarController(this IMvcBuilder builder)
     {

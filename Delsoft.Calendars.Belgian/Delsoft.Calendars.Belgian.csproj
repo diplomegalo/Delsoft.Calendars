@@ -4,40 +4,41 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyVersion>0.2.0.0</AssemblyVersion>
-        <FileVersion>0.2.0.0</FileVersion>
+
+        <Deterministic>false</Deterministic>
+        <AssemblyVersion>0.3.0</AssemblyVersion>
         <NeutralLanguage>en</NeutralLanguage>
 
-        <Title>Delsoft.Holidays.Belgian</Title>
+        <Title>Delsoft.Calendars.Belgian</Title>
         <Authors>diplomegalo</Authors>
-        <Description>The set of Belgian holidays.</Description>
-        <VersionPrefix>0.2.3</VersionPrefix>
+        <Description>This library gather information of belgian calendar.</Description>
+
         <RepositoryUrl>https://github.com/diplomegalo/Delsoft.Calendars.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Delsoft.Calendars\Delsoft.Calendars.csproj" />
+        <ProjectReference Include="..\Delsoft.Calendars\Delsoft.Calendars.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Resources\Translation.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Translation.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Translation.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Translation.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Resources\Translation.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Translation.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Resources\Translation.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Translation.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0"/>
     </ItemGroup>
 
 </Project>

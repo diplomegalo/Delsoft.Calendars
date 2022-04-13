@@ -18,12 +18,14 @@ internal class HolidaysCalendarStub : HolidaysCalendar<HolidaysCalendarStub>, IH
 
     public Models.Holiday Holiday1 => new(date:
         Holiday1Date, name:
-        Translation.ResourceManager.GetString(nameof(Holiday1), CultureInfo.InvariantCulture), localName:
+        Translation.ResourceManager.GetString(nameof(Holiday1), CultureInfo.InvariantCulture)
+            ?? throw new InvalidOperationException($"Cannot find translation for {nameof(Holiday1)}"), localName:
         () => Resources.Translation.Holiday1);
 
     public Models.Holiday Holiday2 => new(date:
         Holiday2Date, name:
-        Translation.ResourceManager.GetString(nameof(Holiday2), CultureInfo.InvariantCulture), localName:
+        Translation.ResourceManager.GetString(nameof(Holiday2), CultureInfo.InvariantCulture)
+            ?? throw new InvalidOperationException($"Cannot find translation for {nameof(Holiday1)}"), localName:
         () => Resources.Translation.Holiday2);
 
     public override string[] GetCultures() => Array.Empty<string>();

@@ -11,7 +11,7 @@
         <Title>Delsoft.Holidays.Belgian</Title>
         <Authors>diplomegalo</Authors>
         <Description>The set of Belgian holidays.</Description>
-        <VersionPrefix>0.2.2</VersionPrefix>
+        <VersionPrefix>0.2.3</VersionPrefix>
         <RepositoryUrl>https://github.com/diplomegalo/Delsoft.Calendars.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>

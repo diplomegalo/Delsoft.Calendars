@@ -15,17 +15,10 @@ public class BelgianCalendarController : ControllerBase
 
     [HttpGet]
     [Route("holidays")]
-    public IActionResult GetAll() => this.Ok(_calendarFactory.Create().Holidays.GetAll());
-
-    [HttpGet]
-    [Route("holidays/{year}")]
-    public IActionResult GetAll(int year) => this.Ok(_calendarFactory.Create(year).Holidays.GetAll());
-
-    [HttpGet]
-    [Route("holidays/{year}/{name}")]
-    public IActionResult Get(int year, string name) => this.Ok(_calendarFactory.Create(year).Holidays.Get(name));
+    public IActionResult GetAll([FromQuery] int? year) =>
+        this.Ok(_calendarFactory.Create(year).Holidays.GetAll());
 
     [HttpGet]
     [Route("holidays/{name}")]
-    public IActionResult Get(string name) => this.Ok(_calendarFactory.Create().Holidays.Get(name));
+    public IActionResult Get([FromQuery]int? year, string name) => this.Ok(_calendarFactory.Create(year).Holidays.Get(name));
 }

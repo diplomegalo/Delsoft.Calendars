@@ -13,16 +13,18 @@ public abstract class HolidaysCalendar : IHolidaysCalendar
             var type = typeof(THolidaysCalendar);
             if (type.IsInterface)
             {
-                type = type.Assembly.GetTypes().Single(type =>
-                    typeof(THolidaysCalendar).IsAssignableFrom(type)
-                    && !type.IsInterface);
+                type = type.Assembly.GetTypes().Single(t =>
+                    typeof(THolidaysCalendar).IsAssignableFrom(t)
+                    && !t.IsInterface);
             }
 
             return year == null
-                ? (THolidaysCalendar)Activator.CreateInstance(type)
-                : (THolidaysCalendar)Activator.CreateInstance(type, year);
+                ? (THolidaysCalendar)Activator.CreateInstance(type)!
+                : (THolidaysCalendar)Activator.CreateInstance(type, year)!;
         }
     }
+
+    protected HolidaysCalendar(int? year) => Year = year ?? DateTime.Today.Year;
 
     public int Year { get; protected init; }
 
@@ -32,7 +34,9 @@ public abstract class HolidaysCalendar : IHolidaysCalendar
 public abstract class HolidaysCalendar<THolidaysCalendar> : HolidaysCalendar, IHolidaysCalendar<THolidaysCalendar>
     where THolidaysCalendar: HolidaysCalendar<THolidaysCalendar>
 {
-    protected HolidaysCalendar() => Year = DateTime.Today.Year;
+    protected HolidaysCalendar(int? year = null) : base(year)
+    {
+    }
 
     public IEnumerable<Holiday> Get(params Func<THolidaysCalendar, Holiday>[] args)
          => args.Select(func => func.Invoke((THolidaysCalendar)this));

@@ -1,8 +1,8 @@
 ﻿using Delsoft.Calendars.Belgian.Controllers;
 using Delsoft.Calendars.Belgian.Holidays;
-using Delsoft.Calendars.Holidays;
-using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Shouldly;
 using Xunit;
 
 namespace Delsoft.Calendars.Belgian.Test;
@@ -29,31 +29,18 @@ public class BelgianCalendarControllerTest
         _controller = new BelgianCalendarController(_calendarFactoryMock.Object);
     }
 
-    [Fact]
-    public void Can_Get_All_With_Year()
+    [Theory]
+    [InlineData(null)]
+    [InlineData(2002)]
+    public void Can_Get_All_With_Year(int? year)
     {
         // Arrange
-        var year = 2002;
 
         // Act
         _controller.GetAll(year);
 
         // Assert
         _calendarFactoryMock.Verify(factory => factory.Create(year));
-        _belgianCalendarMock.VerifyGet(calendar => calendar.Holidays);
-        _belgianHolidaysCalendarMock.Verify(calendar => calendar.GetAll());
-    }
-
-    [Fact]
-    public void Can_Get_All()
-    {
-        // Arrange
-
-        // Act
-        _controller.GetAll();
-
-        // Assert
-        _calendarFactoryMock.Verify(factory => factory.Create(null));
         _belgianCalendarMock.VerifyGet(calendar => calendar.Holidays);
         _belgianHolidaysCalendarMock.Verify(calendar => calendar.GetAll());
     }
@@ -66,13 +53,41 @@ public class BelgianCalendarControllerTest
         // Arrange
 
         // Act
-        _ = year == null
-            ? _controller.Get(holidayName)
-            : _controller.Get(year.Value, holidayName);
+        _ = _controller.Get(year, holidayName);
 
         // Assert
         _calendarFactoryMock.Verify(factory => factory.Create(year));
         _belgianCalendarMock.VerifyGet(calendar => calendar.Holidays);
         _belgianHolidaysCalendarMock.Verify(calendar => calendar.Get(holidayName));
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData(2002)]
+    public void Can_Get_All_Holidays(int? year)
+    {
+        // Arrange
+        var controller = new BelgianCalendarController(new CalendarFactory<IBelgianCalendar>());
+
+        // Act
+        var result = controller.GetAll(year);
+
+        // Assert
+        result.ShouldBeAssignableTo<OkObjectResult>();
+    }
+
+    [Theory]
+    [InlineData(null, "Armistice")]
+    [InlineData(2002, "Armistice")]
+    public void Can_Get_Specific_Holidays(int? year, string holidayName)
+    {
+        // Arrange
+        var controller = new BelgianCalendarController(new CalendarFactory<IBelgianCalendar>());
+
+        // Act
+        var result = controller.Get(year, holidayName);
+
+        // Assert
+        result.ShouldBeAssignableTo<OkObjectResult>();
     }
 }

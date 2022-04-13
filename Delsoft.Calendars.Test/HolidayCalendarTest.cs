@@ -64,11 +64,13 @@ public class HolidayCalendarTest
     {
         // Arrange
         var calendar = HolidaysCalendar.Factory.Create<IHolidaysCalendarStub>();
-        var name = Resources.Translation.ResourceManager.GetString(nameof(calendar.Holiday1), CultureInfo.InvariantCulture);
+        var name = Resources.Translation.ResourceManager.GetString(nameof(calendar.Holiday1), CultureInfo.InvariantCulture)
+            ?? throw new InvalidOperationException($"Cannot find translation for {nameof(calendar.Holiday1)}");
         var localName = Resources.Translation.Holiday1;
 
         // Act
-        var holidays = calendar.Get(name);
+        var holidays = calendar.Get(name)
+            .ToList();
 
         // Assert
         holidays.ShouldBeUnique();

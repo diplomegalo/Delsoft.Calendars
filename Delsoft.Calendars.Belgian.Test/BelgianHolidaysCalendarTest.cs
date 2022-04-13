@@ -113,4 +113,15 @@ public class BelgianHolidaysCalendarTest
         // Assert
         holidays.Count.ShouldBe(11);
     }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData(2002)]
+    public void Can_Create_Belgian_Holidays_Calendar(int? year)
+    {
+        var holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>();
+
+        // Assert
+        holidayCalendar.ShouldNotBeNull();
+    }
 }

@@ -13,7 +13,7 @@ public class CalendarFactory
         }
 
         return year == null
-            ? (TCalendar) Activator.CreateInstance(type)
+            ? (TCalendar) Activator.CreateInstance(type)!
             : (TCalendar) Activator.CreateInstance(type, year)!;
     }
 }

@@ -21,7 +21,7 @@ public abstract class HolidaysCalendar : IHolidaysCalendar
 
     protected HolidaysCalendar(BaseCalendar calendar) => Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
 
-    private BaseCalendar Calendar { get; }
+    protected BaseCalendar Calendar { get; }
 
     public int Year => Calendar.Year;
 

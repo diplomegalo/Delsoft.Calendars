@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Delsoft.Calendars.Exceptions;
 using Delsoft.Calendars.Models;
 
 namespace Delsoft.Calendars.Holidays;
@@ -43,8 +44,18 @@ public abstract class HolidaysCalendar<THolidaysCalendar> : HolidaysCalendar, IH
 
     public IEnumerable<Holiday> Get(params string[] args)
     {
-        var all = this.GetAll().ToDictionary(holiday => holiday.Name, holiday => holiday);
-        return args.Select(key => all[key]);
+            var all = this.GetAll().ToDictionary(holiday => holiday.Name.ToLower(), holiday => holiday);
+            return args.Select(key =>
+            {
+                try
+                {
+                    return all[key.ToLower()];
+                }
+                catch (KeyNotFoundException)
+                {
+                    throw new HolidaysNotFoundException(key);
+                }
+            });
     }
 
     public IEnumerable<Holiday> GetAll() =>

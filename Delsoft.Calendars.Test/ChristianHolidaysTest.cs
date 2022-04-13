@@ -13,16 +13,16 @@ public class ChristianHolidaysTest
 
     public ChristianHolidaysTest()
     {
-        _currentYear = new HolidaysCalendarStub();
-        _year2022 = new HolidaysCalendarStub(2022);
+        _currentYear = new HolidaysCalendarStub(new CalendarStub());
+        _year2022 = new HolidaysCalendarStub(new CalendarStub(2022));
     }
- 
+
     [Fact]
     public void Can_Get_Easter()
     {
         // Arrange
         var expected = new DateTime(2022, 04, 17);
-        
+
         // Assert
         _year2022.Easter().ShouldBeEquivalentTo(expected);
     }
@@ -42,7 +42,7 @@ public class ChristianHolidaysTest
     {
         // Arrange
         var expected = new DateTime(2022, 5, 26);
-        
+
         // Assert
         _year2022.Ascent().ShouldBeEquivalentTo(expected);
     }

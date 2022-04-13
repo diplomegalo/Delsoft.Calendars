@@ -2,13 +2,11 @@
 
 internal class CalendarStub : BaseCalendar<HolidaysCalendarStub>, ICalendarStub
 {
-    public CalendarStub()
-    {
-    }
-
-    public CalendarStub(int year)
+    public CalendarStub(int? year = null)
         : base(year)
     {
 
     }
+
+    public override string[] GetCultures() => new[] { "fr", "nl" };
 }

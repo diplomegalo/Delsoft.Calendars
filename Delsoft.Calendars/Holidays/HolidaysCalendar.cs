@@ -8,34 +8,30 @@ public abstract class HolidaysCalendar : IHolidaysCalendar
 {
     public static class Factory
     {
-        public static THolidaysCalendar Create<THolidaysCalendar>(int? year = null)
+        public static THolidaysCalendar Create<THolidaysCalendar>(BaseCalendar calendar)
             where THolidaysCalendar : IHolidaysCalendar
         {
-            var type = typeof(THolidaysCalendar);
-            if (type.IsInterface)
-            {
-                type = type.Assembly.GetTypes().Single(t =>
-                    typeof(THolidaysCalendar).IsAssignableFrom(t)
-                    && !t.IsInterface);
-            }
+            var type = typeof(THolidaysCalendar).IsInterface
+                ? typeof(THolidaysCalendar).Assembly.GetTypes().Single(t => typeof(THolidaysCalendar).IsAssignableFrom(t) && !t.IsInterface)
+                : typeof(THolidaysCalendar);
 
-            return year == null
-                ? (THolidaysCalendar)Activator.CreateInstance(type)!
-                : (THolidaysCalendar)Activator.CreateInstance(type, year)!;
+            return (THolidaysCalendar)Activator.CreateInstance(type, calendar)!;
         }
     }
 
-    protected HolidaysCalendar(int? year) => Year = year ?? DateTime.Today.Year;
+    protected HolidaysCalendar(BaseCalendar calendar) => Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
 
-    public int Year { get; protected init; }
+    private BaseCalendar Calendar { get; }
 
-    public abstract string[] GetCultures();
+    public int Year => Calendar.Year;
+
+    public virtual string[] GetCultures() => Calendar.GetCultures();
 }
 
 public abstract class HolidaysCalendar<THolidaysCalendar> : HolidaysCalendar, IHolidaysCalendar<THolidaysCalendar>
     where THolidaysCalendar: HolidaysCalendar<THolidaysCalendar>
 {
-    protected HolidaysCalendar(int? year = null) : base(year)
+    protected HolidaysCalendar(BaseCalendar calendar) : base(calendar)
     {
     }
 

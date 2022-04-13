@@ -6,12 +6,8 @@ namespace Delsoft.Calendars.Belgian.Holidays;
 
 public class BelgianHolidaysCalendar : HolidaysCalendar<BelgianHolidaysCalendar>, IBelgianHolidaysCalendar
 {
-    public BelgianHolidaysCalendar()
-    {
-    }
-
-    public BelgianHolidaysCalendar(int year)
-        : base(year)
+    public BelgianHolidaysCalendar(BaseCalendar calendar)
+        : base(calendar)
     {
     }
 

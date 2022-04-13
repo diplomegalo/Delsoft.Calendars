@@ -10,11 +10,9 @@ internal class HolidaysCalendarStub : HolidaysCalendar<HolidaysCalendarStub>, IH
     public static DateTime Holiday1Date = DateTime.Today.AddDays(1);
     public static DateTime Holiday2Date = DateTime.Today;
 
-    public HolidaysCalendarStub()
+    public HolidaysCalendarStub(BaseCalendar calendar): base(calendar)
     {
     }
-
-    public HolidaysCalendarStub(int year) => Year = year;
 
     public Models.Holiday Holiday1 => new(date:
         Holiday1Date, name:

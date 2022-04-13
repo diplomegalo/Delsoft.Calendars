@@ -4,12 +4,10 @@ namespace Delsoft.Calendars.Belgian;
 
 public class BelgianCalendar : BaseCalendar<IBelgianHolidaysCalendar>, IBelgianCalendar
 {
-    public BelgianCalendar()
-    {
-    }
-
-    public BelgianCalendar(int year)
+    public BelgianCalendar(int? year = null)
         : base(year)
     {
     }
+
+    public override string[] GetCultures() => new[] { "fr", "nl" };
 }

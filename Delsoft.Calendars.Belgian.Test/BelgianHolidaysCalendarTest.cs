@@ -15,7 +15,7 @@ public class BelgianHolidaysCalendarTest
 
     public BelgianHolidaysCalendarTest()
     {
-        _holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>();
+        _holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>(new BelgianCalendar());
     }
 
     [Theory]
@@ -119,7 +119,7 @@ public class BelgianHolidaysCalendarTest
     [InlineData(2002)]
     public void Can_Create_Belgian_Holidays_Calendar(int? year)
     {
-        var holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>(year);
+        var holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>(new BelgianCalendar(year));
 
         // Assert
         holidayCalendar.ShouldNotBeNull();

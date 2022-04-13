@@ -12,9 +12,9 @@ public class EuropeanCivilianHolidaysTest
 
     public EuropeanCivilianHolidaysTest()
     {
-        _currentYear = new HolidaysCalendarStub();
+        _currentYear = new HolidaysCalendarStub(new CalendarStub());
     }
-    
+
     [Fact]
     public void Can_Get_NewYear()
     {
@@ -24,7 +24,7 @@ public class EuropeanCivilianHolidaysTest
         // Assert
         _currentYear.NewYear().ShouldBeEquivalentTo(expected);
     }
-    
+
     [Fact]
     public void Can_Get_Armistice1918()
     {

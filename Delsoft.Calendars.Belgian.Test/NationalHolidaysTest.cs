@@ -12,7 +12,7 @@ public class NationalHolidaysTest
 
     public NationalHolidaysTest()
     {
-        _currentYear = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>();
+        _currentYear = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>(new BelgianCalendar());
     }
 
     [Fact]

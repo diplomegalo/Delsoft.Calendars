@@ -2,19 +2,14 @@ namespace Delsoft.Calendars;
 
 public class CalendarFactory
 {
-    public static TCalendar Create<TCalendar> (int? year = null)
+    public static TCalendar Create<TCalendar>(int? year = null)
         where TCalendar : IBaseCalendar
     {
-        var type = typeof(TCalendar);
-        if (type.IsInterface)
-        {
-            type = type.Assembly.GetTypes().Single(t =>
-                type.IsAssignableFrom(t) && !t.IsInterface);
-        }
+        var type = typeof(TCalendar).IsInterface
+            ? typeof(TCalendar).Assembly.GetTypes().Single(t => typeof(TCalendar).IsAssignableFrom(t) && !t.IsInterface)
+            : typeof(TCalendar);
 
-        return year == null
-            ? (TCalendar) Activator.CreateInstance(type)!
-            : (TCalendar) Activator.CreateInstance(type, year)!;
+        return (TCalendar)Activator.CreateInstance(type, year)!;
     }
 }
 

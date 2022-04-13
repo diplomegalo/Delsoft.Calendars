@@ -31,14 +31,14 @@ public static partial class HolidaysExtension
         var d = u % 4;
 
         // lettre dominicale
-        var L = ((2 * t) + (2 * b) - e - d + 32) % 7;
+        var l = ((2 * t) + (2 * b) - e - d + 32) % 7;
 
         // correction
-        var h = (n + (11 * e) + (22 * L)) / 451;
+        var h = (n + (11 * e) + (22 * l)) / 451;
 
         // resultat
-        var mois = (e + L - (7 * h) + 114) / 31;
-        var jours = (e + L - (7 * h) + 114) % 31; // zero based
+        var mois = (e + l - (7 * h) + 114) / 31;
+        var jours = (e + l - (7 * h) + 114) % 31; // zero based
 
         return new DateTime(year, mois, jours + 1);
     }

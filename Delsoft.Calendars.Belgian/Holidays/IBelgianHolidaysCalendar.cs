@@ -3,7 +3,7 @@ using Delsoft.Calendars.Models;
 
 namespace Delsoft.Calendars.Belgian.Holidays;
 
-public interface IBelgianHolidaysCalendar : IHolidaysCalendar
+public interface IBelgianHolidaysCalendar : IHolidaysCalendar<BelgianHolidaysCalendar>
 {
     public Holiday Easter { get; }
     public Holiday EasterMonday { get; }

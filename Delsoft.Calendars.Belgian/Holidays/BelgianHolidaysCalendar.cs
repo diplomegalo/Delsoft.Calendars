@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Reflection;
 using Delsoft.Calendars.Belgian.Resources;
 using Delsoft.Calendars.Holidays;
 
@@ -7,6 +6,15 @@ namespace Delsoft.Calendars.Belgian.Holidays;
 
 public class BelgianHolidaysCalendar : HolidaysCalendar<BelgianHolidaysCalendar>, IBelgianHolidaysCalendar
 {
+    public BelgianHolidaysCalendar()
+    {
+    }
+
+    public BelgianHolidaysCalendar(int year)
+        : base(year)
+    {
+    }
+
     public Models.Holiday Easter => new(date: this.Easter(), name: GetName(nameof(Easter)),
         localName: () => Translation.Easter);
 
@@ -40,11 +48,7 @@ public class BelgianHolidaysCalendar : HolidaysCalendar<BelgianHolidaysCalendar>
     public Models.Holiday Armistice => new(date: this.Armistice1918(), name: GetName(nameof(Armistice)),
         localName: () => Translation.Armistice);
 
-    public override string[] GetCultures() => new[] { "fr", "nl"};
-
-    public override IEnumerable<Models.Holiday> GetAll() =>
-        typeof(IBelgianHolidaysCalendar).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-            .Select(info => (Models.Holiday)info.GetValue(this)!);
+    public override string[] GetCultures() => new[] { "fr", "nl" };
 
     private static string GetName(string propertyName) =>
         Translation.ResourceManager.GetString(propertyName, CultureInfo.InvariantCulture)

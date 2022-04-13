@@ -24,7 +24,12 @@ var calendar = CalendarFactory.Create<BelgianCalendar>(2002);
 The `BaseCalendar` class defines the `Holidays` property which returns a `HolidaysCalendar`. A `HolidaysCalendar` gather a set of properties of specific holidays.
 
 ```c#
-var holidaysCalendar = calendar.Holidays
+// Retrieves the specific HolidaysCalendar class.
+var holidaysCalendar = calendar.Holidays;
+
+// Acces properties of the specific HolidaysCalendar (here the BelgianHolidaysCalendar)
+var easterHolidays = holidaysCalendar.Easter;
+var laborDayHolidays = holidaysCalendar.LaborDay;
 ```
 
 Properties of `HolidaysCalendar` returns a `Holiday` object. The `Holiday` model defines 
@@ -48,10 +53,18 @@ Console.WriteLine($"{easter.Name} happens on {easter.Date.ToShortDateString()} a
 ### Set of holidays
 You can retrieve a list of holidays by using the `GetAll` or the `Get` method.
 
-The `Get` method allows you to select a custom subset of `Holiday` by passing wanted properties as parameters.
+The `Get` method allows you to select a custom subset of `Holiday`, 
+
+- either by passing wanted properties as parameters:
 
 ```c#
 var subset = holidaysCalendar.Get(cal => cal.LaborDay, cal => cal.Easter);
+```
+
+- either by passing the name of the holidays as parameters:
+
+```c#
+var subset = holidaysCalendar.Get("Labor Day", "Easter");
 ```
 
 ### Localisation
@@ -69,4 +82,14 @@ foreach (var holiday in calendar.Holidays.GetAll())
     }
     Console.WriteLine(line);
 }
+```
+
+# Belgian Calendar
+
+## Web API
+Integrate the `BelgianCalendar` to a Web API project by using the `AddBelgianCalendarController` method as below: 
+
+```c#
+builder.Services.AddControllers()
+    .AddBelgianCalendarController();
 ```

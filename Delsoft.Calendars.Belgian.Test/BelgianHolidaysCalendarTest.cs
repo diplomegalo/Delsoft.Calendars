@@ -15,7 +15,7 @@ public class BelgianHolidaysCalendarTest
 
     public BelgianHolidaysCalendarTest()
     {
-        _holidayCalendar = HolidaysCalendar.Create<BelgianHolidaysCalendar>();
+        _holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>();
     }
 
     [Theory]
@@ -88,7 +88,7 @@ public class BelgianHolidaysCalendarTest
         holiday.ShouldNotBeNull();
         holiday.Date.ShouldBe(expectedDate);
         holiday.Name.ShouldBe(name);
-        holiday.LocalName().ShouldBe(localName);
+        holiday.LocalName.ShouldBe(localName);
     }
 
     [Fact]
@@ -112,5 +112,16 @@ public class BelgianHolidaysCalendarTest
 
         // Assert
         holidays.Count.ShouldBe(11);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData(2002)]
+    public void Can_Create_Belgian_Holidays_Calendar(int? year)
+    {
+        var holidayCalendar = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>(year);
+
+        // Assert
+        holidayCalendar.ShouldNotBeNull();
     }
 }

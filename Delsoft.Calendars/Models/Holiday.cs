@@ -2,14 +2,16 @@
 
 public class Holiday
 {
+    private readonly Func<string> _localName;
+
     public Holiday(DateTime date, string name, Func<string> localName)
     {
+        _localName = localName;
         Name = name;
         Date = date;
-        LocalName = localName;
     }
 
     public string Name { get; }
     public DateTime Date { get; }
-    public Func<string> LocalName { get; }
+    public string LocalName => _localName();
 }

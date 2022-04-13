@@ -1,11 +1,14 @@
-name: Build develop
+name: Build and test
 
 on:
   push:
-    branches: 
+    branches:
       - feature/*
       - develop
-      
+  pull_request:
+    branches:
+      - master
+
 jobs:
   build:
 

@@ -12,19 +12,19 @@ public class NationalHolidaysTest
 
     public NationalHolidaysTest()
     {
-        _currentYear = HolidaysCalendar.Create<BelgianHolidaysCalendar>();
+        _currentYear = HolidaysCalendar.Factory.Create<BelgianHolidaysCalendar>();
     }
-    
+
     [Fact]
     public void Can_Get_LaborDay()
     {
         // Arrange
         var expected = new DateTime(DateTime.Today.Year, 5, 1);
-        
+
         // Assert
         _currentYear.LaborDay().ShouldBeEquivalentTo(expected);
     }
-    
+
     [Fact]
     public void Can_Get_BelgianNationalHoliday()
     {

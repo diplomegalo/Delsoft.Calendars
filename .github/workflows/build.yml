@@ -2,7 +2,7 @@ name: Build and test
 
 on:
   push:
-    branches:q
+    branches:
       - feature/*
       - develop
   pull_request:

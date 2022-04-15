@@ -49,7 +49,7 @@ public abstract class CustomCalendar<THolidaysCalendar> : CustomCalendar, ICusto
                 }
                 catch (KeyNotFoundException)
                 {
-                    throw new EventsNotFoundException(key);
+                    throw new EventNotFoundException(key);
                 }
             });
     }

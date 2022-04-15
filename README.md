@@ -89,12 +89,12 @@ foreach (var holiday in agenda.Holidays.GetAll())
 }
 ```
 
-# Belgian Calendar
+# Belgian Agenda
 
 ## Web API
-Integrate the `BelgianCalendar` to a Web API project by using the `AddBelgianAgendaController` method as below: 
+Integrate the `BelgianAgenda` to a Web API project by using the `AddBelgianAgendaController` method as below: 
 
 ```c#
 builder.Services.AddControllers()
-    .AddBelgianCalendarController();
+    .AddBelgianAgendaController();
 ```

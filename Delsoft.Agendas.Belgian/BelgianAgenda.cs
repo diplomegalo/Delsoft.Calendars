@@ -16,5 +16,4 @@ public class BelgianAgenda : Agenda, IBelgianAgenda
     public IBelgianHolidayCalendar BelgianHolidayCalendar => _belgianHolidayCalendar
         ??= CustomCalendar.Factory.Create<BelgianHolidayCalendar>(this);
     public ILegalHolidayCalendar LegalHolidaysCalendar => BelgianHolidayCalendar;
-    public IWalloniaBrusselsSchoolHolidayCalendar WalloniaBrusselsSchoolHolidayCalendar => BelgianHolidayCalendar;
 }

@@ -9,24 +9,28 @@ namespace Delsoft.Agendas.Belgian.Test;
 
 public class BelgianCalendarControllerTest
 {
-    private BelgianCalendarController _controller;
-    private Mock<IAgendaFactory<IBelgianAgenda>> _calendarFactoryMock;
-    private Mock<IBelgianAgenda> _belgianCalendarMock;
-    private Mock<ILegalHolidayCalendar> _belgianHolidaysCalendarMock;
+    private readonly BelgianCalendarController _controller;
+    private readonly Mock<IAgendaFactory<IBelgianAgenda>> _agendaFactoryMock;
+    private readonly Mock<IBelgianAgenda> _belgianAgendaMock;
+    private readonly Mock<ILegalHolidayCalendar> _legalHolidaysCalendarMock;
+    private readonly Mock<IBelgianHolidayCalendar> _belgianHolidayCalendarMock;
 
     public BelgianCalendarControllerTest()
     {
-        _belgianHolidaysCalendarMock = new Mock<ILegalHolidayCalendar>();
+        _legalHolidaysCalendarMock = new Mock<ILegalHolidayCalendar>();
+        _belgianHolidayCalendarMock = new Mock<IBelgianHolidayCalendar>();
 
-        _belgianCalendarMock = new Mock<IBelgianAgenda>();
-        _belgianCalendarMock.SetupGet(calendar => calendar.LegalHolidaysCalendar)
-            .Returns(_belgianHolidaysCalendarMock.Object);
+        _belgianAgendaMock = new Mock<IBelgianAgenda>();
+        _belgianAgendaMock.SetupGet(calendar => calendar.LegalHolidaysCalendar)
+            .Returns(_legalHolidaysCalendarMock.Object);
+        _belgianAgendaMock.SetupGet(calendar => calendar.BelgianHolidayCalendar)
+            .Returns(_belgianHolidayCalendarMock.Object);
 
-        _calendarFactoryMock = new Mock<IAgendaFactory<IBelgianAgenda>>();
-        _calendarFactoryMock.Setup(factory => factory.Create(It.IsAny<int?>()))
-            .Returns(_belgianCalendarMock.Object);
+        _agendaFactoryMock = new Mock<IAgendaFactory<IBelgianAgenda>>();
+        _agendaFactoryMock.Setup(factory => factory.Create(It.IsAny<int?>()))
+            .Returns(_belgianAgendaMock.Object);
 
-        _controller = new BelgianCalendarController(_calendarFactoryMock.Object);
+        _controller = new BelgianCalendarController(_agendaFactoryMock.Object);
     }
 
     [Theory]
@@ -37,12 +41,11 @@ public class BelgianCalendarControllerTest
         // Arrange
 
         // Act
-        _controller.GetWalloniaBrusselsSchoolHoliday(year);
+        _controller.GetLegalHolidays(year);
 
         // Assert
-        _calendarFactoryMock.Verify(factory => factory.Create(year));
-        _belgianCalendarMock.VerifyGet(calendar => calendar.LegalHolidaysCalendar);
-        _belgianHolidaysCalendarMock.Verify(calendar => calendar.GetAll());
+        _agendaFactoryMock.Verify(factory => factory.Create(year));
+        _belgianAgendaMock.VerifyGet(calendar => calendar.LegalHolidaysCalendar);
     }
 
     [Theory]
@@ -56,9 +59,9 @@ public class BelgianCalendarControllerTest
         _ = _controller.Get(year, holidayName);
 
         // Assert
-        _calendarFactoryMock.Verify(factory => factory.Create(year));
-        _belgianCalendarMock.VerifyGet(calendar => calendar.LegalHolidaysCalendar);
-        _belgianHolidaysCalendarMock.Verify(calendar => calendar.Get(holidayName));
+        _agendaFactoryMock.Verify(factory => factory.Create(year));
+        _belgianAgendaMock.VerifyGet(calendar => calendar.BelgianHolidayCalendar);
+        _belgianHolidayCalendarMock.Verify(calendar => calendar.Get(holidayName));
     }
 
     [Theory]
@@ -70,7 +73,7 @@ public class BelgianCalendarControllerTest
         var controller = new BelgianCalendarController(new AgendaFactory<IBelgianAgenda>());
 
         // Act
-        var result = controller.GetWalloniaBrusselsSchoolHoliday(year);
+        var result = controller.GetLegalHolidays(year);
 
         // Assert
         result.ShouldBeAssignableTo<OkObjectResult>();

@@ -14,11 +14,11 @@ namespace Delsoft.Agendas.Belgian.Test;
 
 public class BelgianHolidaysCalendarTest
 {
-    private readonly ILegalHolidayCalendar _holidayCalendar;
+    private readonly ILegalHolidayCalendar _legalHolidayCalendar;
 
     public BelgianHolidaysCalendarTest()
     {
-        _holidayCalendar = CustomCalendar.Factory.Create<BelgianHolidayCalendar>(new BelgianAgenda());
+        _legalHolidayCalendar = CustomCalendar.Factory.Create<BelgianHolidayCalendar>(new BelgianAgenda());
     }
 
     [Theory]
@@ -82,14 +82,15 @@ public class BelgianHolidaysCalendarTest
         var methodInfo = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public)
                          ?? throw new InvalidOperationException($"Unable to find the {propertyName} method");
 
-        var expectedDate = methodInfo.Invoke(null, new object?[] { _holidayCalendar });
+        var expectedDate = methodInfo.Invoke(null, new object?[] { _legalHolidayCalendar });
 
         // Act
-        var holiday = (Event)propertyInfo.GetValue(_holidayCalendar)!;
+        var holiday = (Event)propertyInfo.GetValue(_legalHolidayCalendar)!;
 
         // Assert
         holiday.ShouldNotBeNull();
         holiday.StartDate.ShouldBe(expectedDate);
+        holiday.EndDate.ShouldBe(holiday.StartDate);
         holiday.Name.ShouldBe(name);
         holiday.LocalName.ShouldBe(localName);
     }
@@ -98,7 +99,7 @@ public class BelgianHolidaysCalendarTest
     public void Can_Get_Culture()
     {
         // Act
-        var cultures = _holidayCalendar.GetCultures();
+        var cultures = _legalHolidayCalendar.GetCultures();
 
         // Assert
         cultures.ShouldContain("fr");
@@ -110,7 +111,7 @@ public class BelgianHolidaysCalendarTest
     public void Can_Get_All()
     {
         // Act
-        var holidays = _holidayCalendar.GetAll()
+        var holidays = _legalHolidayCalendar.GetAll()
             .ToList();
 
         // Assert

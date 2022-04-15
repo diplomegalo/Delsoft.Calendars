@@ -22,12 +22,6 @@ public class BelgianCalendarController : ControllerBase
         this.Ok(_agendaFactory.Create(year).GetAll(agenda => agenda.LegalHolidaysCalendar));
 
     [HttpGet]
-    [Route("calendars/wallonia-brussels-school-holiday/")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetWalloniaBrusselsSchoolHoliday([FromQuery] int? year)
-        => this.Ok(_agendaFactory.Create(year).GetAll(agenda => agenda.WalloniaBrusselsSchoolHolidayCalendar));
-
-    [HttpGet]
     [Route("events/{name}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult Get([FromQuery]int? year, string name) =>

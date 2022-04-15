@@ -6,5 +6,4 @@ public interface IBelgianAgenda : IAgenda
 {
     IBelgianHolidayCalendar BelgianHolidayCalendar { get; }
     ILegalHolidayCalendar LegalHolidaysCalendar { get; }
-    IWalloniaBrusselsSchoolHolidayCalendar WalloniaBrusselsSchoolHolidayCalendar { get; }
 }

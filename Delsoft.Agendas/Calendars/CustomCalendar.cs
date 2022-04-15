@@ -9,14 +9,8 @@ public abstract class CustomCalendar : ICustomCalendar
     public static class Factory
     {
         public static THolidaysCalendar Create<THolidaysCalendar>(Agenda agenda)
-            where THolidaysCalendar : CustomCalendar
-        {
-            var type = typeof(THolidaysCalendar).IsInterface
-                ? typeof(THolidaysCalendar).Assembly.GetTypes().Single(t => typeof(THolidaysCalendar).IsAssignableFrom(t) && !t.IsInterface)
-                : typeof(THolidaysCalendar);
-
-            return (THolidaysCalendar)Activator.CreateInstance(type, agenda)!;
-        }
+            where THolidaysCalendar : CustomCalendar =>
+            (THolidaysCalendar)Activator.CreateInstance(typeof(THolidaysCalendar), agenda)!;
     }
 
     protected CustomCalendar(Agenda agenda) => this.Agenda = agenda ?? throw new ArgumentNullException(nameof(agenda));

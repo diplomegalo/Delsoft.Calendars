@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using Delsoft.Agendas.Test.Stubs;
 using Shouldly;
 using Xunit;
 
 namespace Delsoft.Agendas.Test;
 
-public class CalendarTest
+public class AgendaTest
 {
     [Fact]
-    public void Can_Create_Calendar()
+    public void Can_Create_Agenda()
     {
         // Arrange
         var year = DateTime.Today.Year;
@@ -28,7 +29,7 @@ public class CalendarTest
     }
 
     [Fact]
-    public void Can_Create_Calendar_Interface()
+    public void Can_Create_Agenda_Interface()
     {
         // Arrange
         var year = DateTime.Today.Year;
@@ -47,7 +48,7 @@ public class CalendarTest
     }
 
     [Fact]
-    public void Can_Create_Calendar_With_Specific_Year()
+    public void Can_Create_Agenda_With_Specific_Year()
     {
         // Arrange
         var year = 2002;
@@ -92,5 +93,20 @@ public class CalendarTest
                 actual = expected;
             }
         }
+    }
+
+    [Fact]
+    public void Can_Get_All_Event()
+    {
+        // Arrange
+        var agenda = AgendaFactory.Create<AgendaStub>();
+
+        // Act
+        var actual = agenda
+            .GetAll(x => x.CustomCalendar)
+            .ToList();
+
+        // Assert
+        actual.ShouldNotBeEmpty();
     }
 }

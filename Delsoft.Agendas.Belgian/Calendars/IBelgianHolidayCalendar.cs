@@ -1,8 +1,7 @@
 ﻿namespace Delsoft.Agendas.Belgian.Calendars;
 
 public interface IBelgianHolidayCalendar :
-    ILegalHolidayCalendar,
-    IWalloniaBrusselsSchoolHolidayCalendar
+    ILegalHolidayCalendar
 {
 
 }

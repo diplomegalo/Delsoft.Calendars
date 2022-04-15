@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using Delsoft.Agendas.Calendars;
+using Delsoft.Agendas.Exceptions;
 using Delsoft.Agendas.Test.Stubs;
 using Delsoft.Calendars.Test.Resources;
 using Shouldly;
@@ -9,15 +10,17 @@ using Xunit;
 
 namespace Delsoft.Agendas.Test;
 
-public class HolidayCalendarTest
+public class CustomCalendarTest
 {
     private readonly ICustomCalendarStub _calendar;
     private readonly ICustomCalendarStub _2002Calendar;
+    private readonly AgendaStub _agenda;
 
-    public HolidayCalendarTest()
+    public CustomCalendarTest()
     {
+        _agenda = new AgendaStub();
         _2002Calendar = CustomCalendar.Factory.Create<CustomCalendarStub>(new AgendaStub(2002));
-        _calendar = CustomCalendar.Factory.Create<CustomCalendarStub>(new AgendaStub());
+        _calendar = CustomCalendar.Factory.Create<CustomCalendarStub>(_agenda);
     }
 
     [Fact]
@@ -27,6 +30,7 @@ public class HolidayCalendarTest
 
         // Assert
         _calendar.Year.ShouldBe(DateTime.Today.Year);
+        _calendar.GetCultures().ShouldBe(_agenda.GetCultures(), true);
     }
 
     [Fact]
@@ -86,5 +90,15 @@ public class HolidayCalendarTest
         holidays.ElementAt(1).StartDate.ShouldBe(_calendar.Holiday2.StartDate);
         holidays.ElementAt(1).Name.ShouldBe(_calendar.Holiday2.Name);
         holidays.ElementAt(1).LocalName.ShouldBe(holiday2LocalName);
+    }
+
+    [Fact]
+    public void Cannot_Found_Unknow_Holiday()
+    {
+        // Act
+        var method = () => _calendar.Get("plop").ToList();
+
+        // Assert
+        method.ShouldThrow<EventNotFoundException>();
     }
 }

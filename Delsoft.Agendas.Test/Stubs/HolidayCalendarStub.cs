@@ -26,6 +26,4 @@ internal class CustomCalendarStub : CustomCalendar<CustomCalendarStub>, ICustomC
         Translation.ResourceManager.GetString(nameof(this.Holiday2), CultureInfo.InvariantCulture)
             ?? throw new InvalidOperationException($"Cannot find translation for {nameof(this.Holiday1)}"),
         () => Delsoft.Calendars.Test.Resources.Translation.Holiday2);
-
-    public override string[] GetCultures() => Array.Empty<string>();
 }

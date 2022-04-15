@@ -4,5 +4,7 @@ namespace Delsoft.Agendas.Belgian;
 
 public interface IBelgianAgenda : IAgenda
 {
-    IBelgianHolidayCalendar Holidays { get; }
+    IBelgianHolidayCalendar BelgianHolidayCalendar { get; }
+    ILegalHolidayCalendar LegalHolidaysCalendar { get; }
+    IWalloniaBrusselsSchoolHolidayCalendar WalloniaBrusselsSchoolHolidayCalendar { get; }
 }

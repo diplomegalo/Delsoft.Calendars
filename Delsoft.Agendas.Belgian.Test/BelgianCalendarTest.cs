@@ -15,6 +15,6 @@ public class BelgianCalendarTest
 
         // Assert
         calendar.ShouldNotBeNull();
-        calendar.Holidays.ShouldNotBeNull();
+        calendar.LegalHolidaysCalendar.ShouldNotBeNull();
     }
 }

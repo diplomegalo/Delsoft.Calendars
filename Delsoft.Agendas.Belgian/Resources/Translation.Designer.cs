@@ -88,11 +88,29 @@ namespace Delsoft.Calendars.Belgian.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autumn Holiday.
+        /// </summary>
+        internal static string AutumnHoliday {
+            get {
+                return ResourceManager.GetString("AutumnHoliday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Christmas.
         /// </summary>
         internal static string Christmas {
             get {
                 return ResourceManager.GetString("Christmas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commemoration Of 11 Novembre.
+        /// </summary>
+        internal static string CommemorationOf11November {
+            get {
+                return ResourceManager.GetString("CommemorationOf11November", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace Delsoft.Calendars.Belgian.Resources {
         internal static string EasterMonday {
             get {
                 return ResourceManager.GetString("EasterMonday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to French Community Holiday.
+        /// </summary>
+        internal static string FrenchCommunityHoliday {
+            get {
+                return ResourceManager.GetString("FrenchCommunityHoliday", resourceCulture);
             }
         }
         

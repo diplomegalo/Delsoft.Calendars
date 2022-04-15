@@ -52,4 +52,19 @@ public class BelgianHolidayCalendar : CustomCalendar<BelgianHolidayCalendar>, IB
     private static string GetName(string propertyName) =>
         Translation.ResourceManager.GetString(propertyName, CultureInfo.InvariantCulture)
         ?? throw new InvalidOperationException("Cannot set property with null value");
+
+    public Event FrenchCommunityHoliday => new(
+        Agenda.FrenchCommunityHoliday(),
+        GetName(nameof(this.FrenchCommunityHoliday)),
+        () => Translation.FrenchCommunityHoliday);
+
+    public Event AutumnHoliday => new(
+            Agenda.AutumnHoliday(),
+            GetName(nameof(this.AutumnHoliday)),
+            () => Translation.AutumnHoliday);
+
+    public Event CommemorationOf11November => new(
+        Agenda.CommemorationOf11November(),
+        GetName(nameof(this.CommemorationOf11November)),
+        () => Translation.CommemorationOf11November);
 }

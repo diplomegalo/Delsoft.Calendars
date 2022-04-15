@@ -13,8 +13,8 @@ public class AgendaFactory
     }
 }
 
-public class AgendaFactory<TCalendar> : IAgendaFactory<TCalendar>
-    where TCalendar : IAgenda
+public class AgendaFactory<TAgenda> : IAgendaFactory<TAgenda>
+    where TAgenda : IAgenda
 {
-    public TCalendar Create(int? year = null) => AgendaFactory.Create<TCalendar>(year);
+    public TAgenda Create(int? year = null) => AgendaFactory.Create<TAgenda>(year);
 }

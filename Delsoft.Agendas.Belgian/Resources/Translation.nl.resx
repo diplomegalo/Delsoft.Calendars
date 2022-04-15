@@ -44,4 +44,13 @@
     <data name="Toussaint" xml:space="preserve">
         <value>Toussaint</value>
     </data>
+    <data name="FrenchCommunityHoliday" xml:space="preserve">
+        <value>Dag van de Franse Gemeenschap</value>
+    </data>
+    <data name="AutumnHoliday" xml:space="preserve">
+        <value>HerfstVakantie</value>
+    </data>
+    <data name="CommemorationOf11November" xml:space="preserve">
+        <value>Herdenking van 11 novembre</value>
+    </data>
 </root>

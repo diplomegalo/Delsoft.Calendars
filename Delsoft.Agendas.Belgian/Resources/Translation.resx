@@ -3,7 +3,7 @@
 <root>
     <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <xsd:element name="root" msdata:IsDataSet="true">
-            
+
         </xsd:element>
     </xsd:schema>
     <resheader name="resmimetype">
@@ -50,5 +50,14 @@
     </data>
     <data name="Armistice" xml:space="preserve">
         <value>Armistice</value>
+    </data>
+    <data name="FrenchCommunityHoliday" xml:space="preserve">
+        <value>French Community Holiday</value>
+    </data>
+    <data name="AutumnHoliday" xml:space="preserve">
+        <value>Autumn Holiday</value>
+    </data>
+    <data name="CommemorationOf11November" xml:space="preserve">
+        <value>Commemoration Of 11 Novembre</value>
     </data>
 </root>

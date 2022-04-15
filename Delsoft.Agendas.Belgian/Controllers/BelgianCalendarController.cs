@@ -1,11 +1,11 @@
-﻿using Delsoft.Calendars.Belgian;
+﻿using Delsoft.Agendas.Belgian.Calendars;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Delsoft.Agendas.Belgian.Controllers;
 
 [ApiController]
-[Route("api/agenda/belgian")]
+[Route("api/agendas/belgian")]
 public class BelgianCalendarController : ControllerBase
 {
     private readonly IAgendaFactory<IBelgianAgenda> _agendaFactory;
@@ -16,13 +16,20 @@ public class BelgianCalendarController : ControllerBase
     }
 
     [HttpGet]
-    [Route("holidays")]
+    [Route("calendars/legal-holidays")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetAll([FromQuery] int? year) =>
-        this.Ok(_agendaFactory.Create(year).Holidays.GetAll());
+    public IActionResult GetLegalHolidays([FromQuery] int? year) =>
+        this.Ok(_agendaFactory.Create(year).GetAll(agenda => agenda.LegalHolidaysCalendar));
 
     [HttpGet]
-    [Route("holidays/{name}")]
+    [Route("calendars/wallonia-brussels-school-holiday/")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult Get([FromQuery]int? year, string name) => this.Ok(_agendaFactory.Create(year).Holidays.Get(name));
+    public IActionResult GetWalloniaBrusselsSchoolHoliday([FromQuery] int? year)
+        => this.Ok(_agendaFactory.Create(year).GetAll(agenda => agenda.WalloniaBrusselsSchoolHolidayCalendar));
+
+    [HttpGet]
+    [Route("events/{name}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult Get([FromQuery]int? year, string name) =>
+        this.Ok(_agendaFactory.Create(year).BelgianHolidayCalendar.Get(name));
 }

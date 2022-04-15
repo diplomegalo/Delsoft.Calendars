@@ -55,10 +55,10 @@ public class HolidayCalendarTest
 
         // Assert
         list.Count.ShouldBe(2);
-        list.First().DateStart.ShouldBe(CustomCalendarStub.Holiday1Date);
+        list.First().StartDate.ShouldBe(CustomCalendarStub.Holiday1Date);
         list.First().Name.ShouldBe(holiday1Name);
         list.First().LocalName.ShouldBe(holiday1LocalName);
-        list.ElementAt(1).DateStart.ShouldBe(CustomCalendarStub.Holiday2Date);
+        list.ElementAt(1).StartDate.ShouldBe(CustomCalendarStub.Holiday2Date);
         list.ElementAt(1).Name.ShouldBe(holiday2Name);
         list.ElementAt(1).LocalName.ShouldBe(holiday2LocalName);
     }
@@ -80,10 +80,10 @@ public class HolidayCalendarTest
 
         // Assert
         holidays.Count.ShouldBe(2);
-        holidays.ElementAt(0).DateStart.ShouldBe(_calendar.Holiday1.DateStart);
+        holidays.ElementAt(0).StartDate.ShouldBe(_calendar.Holiday1.StartDate);
         holidays.ElementAt(0).Name.ShouldBe(_calendar.Holiday1.Name);
         holidays.ElementAt(0).LocalName.ShouldBe(holiday1LocalName);
-        holidays.ElementAt(1).DateStart.ShouldBe(_calendar.Holiday2.DateStart);
+        holidays.ElementAt(1).StartDate.ShouldBe(_calendar.Holiday2.StartDate);
         holidays.ElementAt(1).Name.ShouldBe(_calendar.Holiday2.Name);
         holidays.ElementAt(1).LocalName.ShouldBe(holiday2LocalName);
     }

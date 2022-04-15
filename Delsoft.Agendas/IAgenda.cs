@@ -1,9 +1,10 @@
-﻿namespace Delsoft.Agendas;
+﻿using Delsoft.Agendas.Calendars;
+using Delsoft.Agendas.Models;
+
+namespace Delsoft.Agendas;
 
 public interface IAgenda
 {
-    public int Year { get; }
-    public abstract string[] GetCultures();
-
-
+    int Year { get; }
+    abstract string[] GetCultures();
 }

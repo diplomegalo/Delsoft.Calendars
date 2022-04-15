@@ -12,14 +12,14 @@ public class BelgianCalendarControllerTest
     private BelgianCalendarController _controller;
     private Mock<IAgendaFactory<IBelgianAgenda>> _calendarFactoryMock;
     private Mock<IBelgianAgenda> _belgianCalendarMock;
-    private Mock<IBelgianHolidayCalendar> _belgianHolidaysCalendarMock;
+    private Mock<ILegalHolidayCalendar> _belgianHolidaysCalendarMock;
 
     public BelgianCalendarControllerTest()
     {
-        _belgianHolidaysCalendarMock = new Mock<IBelgianHolidayCalendar>();
+        _belgianHolidaysCalendarMock = new Mock<ILegalHolidayCalendar>();
 
         _belgianCalendarMock = new Mock<IBelgianAgenda>();
-        _belgianCalendarMock.SetupGet(calendar => calendar.Holidays)
+        _belgianCalendarMock.SetupGet(calendar => calendar.LegalHolidaysCalendar)
             .Returns(_belgianHolidaysCalendarMock.Object);
 
         _calendarFactoryMock = new Mock<IAgendaFactory<IBelgianAgenda>>();
@@ -37,11 +37,11 @@ public class BelgianCalendarControllerTest
         // Arrange
 
         // Act
-        _controller.GetAll(year);
+        _controller.GetWalloniaBrusselsSchoolHoliday(year);
 
         // Assert
         _calendarFactoryMock.Verify(factory => factory.Create(year));
-        _belgianCalendarMock.VerifyGet(calendar => calendar.Holidays);
+        _belgianCalendarMock.VerifyGet(calendar => calendar.LegalHolidaysCalendar);
         _belgianHolidaysCalendarMock.Verify(calendar => calendar.GetAll());
     }
 
@@ -57,7 +57,7 @@ public class BelgianCalendarControllerTest
 
         // Assert
         _calendarFactoryMock.Verify(factory => factory.Create(year));
-        _belgianCalendarMock.VerifyGet(calendar => calendar.Holidays);
+        _belgianCalendarMock.VerifyGet(calendar => calendar.LegalHolidaysCalendar);
         _belgianHolidaysCalendarMock.Verify(calendar => calendar.Get(holidayName));
     }
 
@@ -70,7 +70,7 @@ public class BelgianCalendarControllerTest
         var controller = new BelgianCalendarController(new AgendaFactory<IBelgianAgenda>());
 
         // Act
-        var result = controller.GetAll(year);
+        var result = controller.GetWalloniaBrusselsSchoolHoliday(year);
 
         // Assert
         result.ShouldBeAssignableTo<OkObjectResult>();

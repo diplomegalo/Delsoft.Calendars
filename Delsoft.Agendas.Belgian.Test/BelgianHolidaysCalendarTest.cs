@@ -14,7 +14,7 @@ namespace Delsoft.Agendas.Belgian.Test;
 
 public class BelgianHolidaysCalendarTest
 {
-    private readonly IBelgianHolidayCalendar _holidayCalendar;
+    private readonly ILegalHolidayCalendar _holidayCalendar;
 
     public BelgianHolidaysCalendarTest()
     {
@@ -62,7 +62,7 @@ public class BelgianHolidaysCalendarTest
             ? CultureInfo.CreateSpecificCulture(culture)
             : CultureInfo.InvariantCulture;
 
-        var propertyInfo = typeof(IBelgianHolidayCalendar)
+        var propertyInfo = typeof(ILegalHolidayCalendar)
                                .GetProperty(propertyName)
                            ?? throw new InvalidOperationException($"Unable to find the {propertyName} property");
 
@@ -89,7 +89,7 @@ public class BelgianHolidaysCalendarTest
 
         // Assert
         holiday.ShouldNotBeNull();
-        holiday.DateStart.ShouldBe(expectedDate);
+        holiday.StartDate.ShouldBe(expectedDate);
         holiday.Name.ShouldBe(name);
         holiday.LocalName.ShouldBe(localName);
     }

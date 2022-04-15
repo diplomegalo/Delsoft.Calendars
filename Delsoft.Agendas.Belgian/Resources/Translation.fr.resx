@@ -44,4 +44,13 @@
     <data name="Armistice" xml:space="preserve">
         <value>Armistice</value>
     </data>
+    <data name="FrenchCommunityHoliday" xml:space="preserve">
+        <value>Fête de la communauté Française</value>
+    </data>
+    <data name="AutumnHoliday" xml:space="preserve">
+        <value>Vacance d'Automne</value>
+    </data>
+    <data name="CommemorationOf11November" xml:space="preserve">
+        <value>Commémoration du 11 novembre</value>
+    </data>
 </root>
